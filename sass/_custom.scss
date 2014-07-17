@@ -61,7 +61,6 @@ table {
 
 .only-on-phones {
 	@include hidden(desktop);
-	@include visible(all-phones);
 }
 
 @include respond(desktop) {

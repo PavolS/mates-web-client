@@ -53,7 +53,6 @@ table {
 
 // goRESPONSIVE!
 //  - we consider phones and tablets the same thing
-$phone-xwide: 500px;
 
 .not-on-phones {
 	@include hidden(all-phones);
