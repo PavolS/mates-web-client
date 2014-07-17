@@ -53,7 +53,6 @@ table {
 
 // goRESPONSIVE!
 //  - we consider phones and tablets the same thing
-$phone-xwide: 100px;
 
 .not-on-phones {
 	@include hidden(all-phones);
@@ -65,8 +64,23 @@ $phone-xwide: 100px;
 	@include visible(all-phones);
 }
 
-@include respond(all-phones) {
-  input.xwide { width: $phone-xwide; max-width: $phone-xwide; min-width: $phone-xwide; }
+@include respond(desktop) {
+  /* Your font is so big, it's absurd! */
+  // h1,h2,h3,h4,h5,h6 {  @include font-size($absurd); }
 }
+
+@include respond(desktop) {
+  .text.input { @include input-size(xwide); }
+}
+
+@include respond(portrait-phones) {
+  .text.input { @include input-size(narrow); }
+}
+
+@include respond(landscape-phones) {
+  .text.input { @include input-size(normal); }
+}
+
+
 
 @import "_d3.scss";

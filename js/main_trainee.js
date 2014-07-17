@@ -284,7 +284,7 @@ function updateStatus() {
 		clearInterval(send_interval);
 
 		document.getElementById("startBtn-div").style.display = 'inline-block';
-		document.getElementById("stopBtn-div").style.display = 'inline-block';
+		document.getElementById("stopBtn-div").style.display = 'none';
 
 		document.getElementById("startStopBtn-div").style.display = 'inline-block';
 		document.getElementById("interruptBtn-div").style.display = 'none';

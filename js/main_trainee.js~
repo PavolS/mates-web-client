@@ -255,7 +255,7 @@ function updateStatus() {
 
 	function sendBtn_countDown() {
 	    console.log("send_to: " + send_to);
-            document.getElementById("sendBtn").innerHTML =  send_inner + "(" + send_to + ")";
+            document.getElementById("sendBtn").innerHTML =  send_inner + send_to;
 	    if (send_to == 0) {
 		return onSend();
 	    } else if (send_to == send_to_nominal) {

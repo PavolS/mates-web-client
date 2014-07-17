@@ -27,7 +27,9 @@
       function updateUI() {
         if (recorderReady && recognizerReady) {
 		startStopBtn.disabled = false;
+		startBtn.disabled = false;
 		document.getElementById('startStopBtn-div').classList.toggle("success",true);
+		document.getElementById('startBtn-div').classList.toggle("success",true);
 		onMicOk(); // callback to the main js handler
 	};
       };
@@ -66,11 +68,19 @@
 
       // This starts recording. We first need to get the id of the grammar to use
       var startRecording = function() {
+
+		document.getElementById("startBtn-div").style.display = 'none';
+		document.getElementById("stopBtn-div").style.display = 'inline-block';
+
         if (recorder && recorder.start(grammar_id)) displayRecording(true);
       };
 
       // Stops recording
       var stopRecording = function() {
+
+		document.getElementById("startBtn-div").style.display = 'none';
+		document.getElementById("stopBtn-div").style.display = 'none';
+
         recorder && recorder.stop();
         displayRecording(false);
       };

@@ -116,10 +116,10 @@
 			<div id="startStopBtn-div" class="medium oval btn not-on-phones">
 				<button id="startStopBtn" ><i class="icon-mic"></i></button>
 			</div>
-			<div id="startBtn-div" class="medium oval btn ">
+			<div id="startBtn-div" class="medium oval btn only-on-phones">
 				<button id="startBtn" ><i class="icon-mic"></i></button>
 			</div>
-			<div id="stopBtn-div" class="medium oval btn only-on-phones" style="display: none">
+			<div id="stopBtn-div" class="medium danger oval btn only-on-phones" style="display: none">
 				<button id="stopBtn" ><i class="icon-mic"></i></button>
 			</div>
 			<div id="interruptBtn-div" class="medium danger oval btn" style="display: none">
@@ -129,8 +129,8 @@
 
 		<div class="eight columns">
 			<div class="prepend append field">
-			    <button class="adjoined toggle" gumby-trigger="#details"><i class="icon-search"></i></button>
-			    <input id='msg' class="xwide text input" type="text" placeholder="voiceloop messge" />
+			    <button class="adjoined toggle not-on-phones" gumby-trigger="#details"><i class="icon-search"></i></button>
+			    <input id='msg' class="normal text input" type="text" placeholder="voiceloop messge" />
 			    <div class="medium primary btn"><button  id="sendBtn" onclick="onSend()"><i class="icon-sound"></i></button></div>
 			</div>
 		</div>
