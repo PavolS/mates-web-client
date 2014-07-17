@@ -1,0 +1,55 @@
+// MATES custom SCSS 
+
+$bottom-tabs-height: 150px;
+
+.row.bottom-offset {
+	min-height: 50px; 
+}
+
+.valign:before {
+	height: 150px;
+}
+
+table {
+
+	width: 960px / 12 * 7 * 0.9;
+
+	tr td:first-child {
+		width: 60px;
+		font-weight: bold;
+	}
+
+	tr td:nth-child(2) {
+		width: 960px / 12 * 7 * 0.9 - 2 * 60px;
+		font-weight: regular;
+	}
+
+	tr td:nth-child(3) {
+		width: 60px;
+		font-weight: bold;
+	}
+
+}
+
+.hideme {
+	display: none;
+}
+
+.hideme.active {
+	display: block;
+}
+
+
+.row.bottom {
+	max-height:$bottom-tabs-height + $tab-height; 
+	min-height:$bottom-tabs-height + $tab-height; 
+}
+
+.tab-content.bottom {
+	max-height:$bottom-tabs-height; 
+	min-height:$bottom-tabs-height; 
+	overflow:auto;
+}
+
+
+@import "_d3.scss";

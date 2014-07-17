@@ -1,0 +1,8 @@
+var agent_i = 'SOM';
+
+var predefined_agents = ['SOM', 'SOE', 'SPACON'];
+
+var known_agents = [];
+
+function add_agent(agent) {
+}

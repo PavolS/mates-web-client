@@ -1,0 +1,23 @@
+#JSGF V1.0;
+/**
+ * JSGF Grammar for SCO voiceloop -- demo version
+ */
+grammar voiceloop;
+
+public <voiceloop> = <voiceloop_standard> | <voiceloop_broadcast>;
+
+<voiceloop_broadcast> = <role_from> on loop <loop> <msg_hi> everyone;
+<voiceloop_standard> = <role_to> <role_from> <msg>;
+
+<role_from> = SOM;
+<role_to> = SOE | SPACON;
+
+<msg> = <msg_hi> | <msg_lim> | <msg_inv>;
+
+<msg_lim> = change limits;
+<msg_inv> = please investigate parameter;
+<msg_hi> = hi | hello | good morning;
+<msg_repeat> = please repeat | can you repeat that please;
+
+<loop> = one;
+
