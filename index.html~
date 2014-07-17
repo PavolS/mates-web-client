@@ -80,7 +80,7 @@
 
 		</div>
 
-		<div id="graph" class="five columns" >
+		<div id="graph" class="five columns not-on-phones" >
 		</div>
 
 
@@ -113,8 +113,14 @@
 
 	<div class="row" style = "min-height:80px;">
 		<div class="one columns">
-			<div id="startStopBtn-div" class="medium oval btn">
+			<div id="startStopBtn-div" class="medium oval btn not-on-phones">
 				<button id="startStopBtn" ><i class="icon-mic"></i></button>
+			</div>
+			<div id="startBtn-div" class="medium oval btn ">
+				<button id="startBtn" ><i class="icon-mic"></i></button>
+			</div>
+			<div id="stopBtn-div" class="medium oval btn only-on-phones" style="display: none">
+				<button id="stopBtn" ><i class="icon-mic"></i></button>
 			</div>
 			<div id="interruptBtn-div" class="medium danger oval btn" style="display: none">
 				<button id="interruptBtn" onclick="onInterrupt()"><i class="icon-cancel"></i></button>
@@ -130,11 +136,11 @@
 		</div>
 	</div>
 
-	<div class="row bottom-offset">
+	<div class="row bottom-offset not-on-phones">
 	</div>
 
 
-	<div class="row bottom" >
+	<div class="row bottom not-on-phones" >
 		<section class="tabs" >
 
 		    <ul class="tab-nav">
@@ -150,7 +156,7 @@
 		    </div>
 
 		    <div class="tab-content bottom active" id="current-status">
-			Loading page<br/>
+			Loading page
 		    </div>
 
 		</section>

@@ -255,13 +255,19 @@ function updateStatus() {
 
 	function sendBtn_countDown() {
 	    console.log("send_to: " + send_to);
-            document.getElementById("sendBtn").innerHTML =  send_inner + "(" + send_to + ")";
+            document.getElementById("sendBtn").innerHTML =  send_inner + send_to;
 	    if (send_to == 0) {
 		return onSend();
 	    } else if (send_to == send_to_nominal) {
 		console.log("send_to is nominal: " + send_to);
+
+		document.getElementById("startBtn-div").style.display = 'none';
+		document.getElementById("stopBtn-div").style.display = 'none';
+
 		document.getElementById("startStopBtn-div").style.display = 'none';
 		document.getElementById("interruptBtn-div").style.display = 'inline-block';
+
+
 		send_to-=1;
 	    } else {
 		send_to-=1;
@@ -276,6 +282,9 @@ function updateStatus() {
 	function sendBtn_clear() {
 		send_to = send_to_nominal;
 		clearInterval(send_interval);
+
+		document.getElementById("startBtn-div").style.display = 'inline-block';
+		document.getElementById("stopBtn-div").style.display = 'inline-block';
 
 		document.getElementById("startStopBtn-div").style.display = 'inline-block';
 		document.getElementById("interruptBtn-div").style.display = 'none';

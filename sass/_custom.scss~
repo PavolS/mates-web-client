@@ -11,6 +11,9 @@ $bottom-tabs-height: 150px;
 }
 
 table {
+
+	width: 960px / 12 * 7 * 0.9;
+
 	tr td:first-child {
 		width: 60px;
 		font-weight: bold;
@@ -36,7 +39,6 @@ table {
 	display: block;
 }
 
-
 .row.bottom {
 	max-height:$bottom-tabs-height + $tab-height; 
 	min-height:$bottom-tabs-height + $tab-height; 
@@ -48,5 +50,23 @@ table {
 	overflow:auto;
 }
 
+
+// goRESPONSIVE!
+//  - we consider phones and tablets the same thing
+$phone-xwide: 100px;
+
+.not-on-phone {
+	@include hidden(all-phones);
+	@include hidden(tablets);
+}
+
+.only-on-phone {
+	@include hidden(desktop);
+	@include visible(all-phones);
+}
+
+@include respond(all-phones) {
+  input.xwide { width: $phone-xwide; max-width: $phone-xwide; min-width: $phone-xwide; }
+}
 
 @import "_d3.scss";

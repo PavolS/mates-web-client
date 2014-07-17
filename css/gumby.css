@@ -1699,6 +1699,13 @@ table tr td:nth-child(3) { width: 60px; font-weight: bold; }
 
 .tab-content.bottom { max-height: 150px; min-height: 150px; overflow: auto; }
 
+@media only screen and (max-width: 767px) { .not-on-phones { display: none !important; } }
+@media only screen and (min-width: 768px) and (max-width: 939px) { .not-on-phones { display: none !important; } }
+
+@media only screen and (min-width: 768px) { .only-on-phones { display: none !important; } }
+@media only screen and (max-width: 767px) { .only-on-phones { display: inherit !important; } }
+
+@media only screen and (max-width: 767px) { input.xwide { width: 100px; max-width: 100px; min-width: 100px; } }
 svg { background-color: #FFF; cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; }
 
 svg:not(.active):not(.ctrl) { cursor: crosshair; }

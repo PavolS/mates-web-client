@@ -188,5 +188,9 @@
 	      startStopBtn.disabled = true;
 	      startStopBtn.onmousedown = startRecording;
 	      startStopBtn.onmouseup = stopRecording;
+
+	      document.getElementById('startBtn').disabled = true;
+	      document.getElementById('startBtn').onclick = startRecording;
+	      document.getElementById('stopBtn').onclick = stopRecording;
       };
 

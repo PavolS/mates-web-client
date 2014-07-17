@@ -28,7 +28,7 @@
         if (recorderReady && recognizerReady) {
 		startStopBtn.disabled = false;
 		document.getElementById('startStopBtn-div').classList.toggle("success",true);
-		onMicOk(); // callback for the main js handler
+		onMicOk(); // callback to the main js handler
 	};
       };
 
@@ -188,5 +188,9 @@
 	      startStopBtn.disabled = true;
 	      startStopBtn.onmousedown = startRecording;
 	      startStopBtn.onmouseup = stopRecording;
+
+	      document.getElementById('startBtn').disabled = true;
+	      document.getElementById('startBtn').onclick = startRecording;
+	      document.getElementById('stopBtn').onclick = stopRecording;
       };
 
