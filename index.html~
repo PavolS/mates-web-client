@@ -48,7 +48,7 @@
 	</div>
 
 	<div class="valign row only-on-phones">
-		<div style="float:right"><h2>MATES mobile</h2></div>
+		<div style="float:right"><h4>MATES mobile</h4></div>
 	</div>
 
 	<div class="row" style="display:none;">
@@ -238,27 +238,30 @@
 
 
 	<!-- grammar for voicellop -->
-	<script src="shared/js/voiceloop.words.js"></script>
-	<script src="shared/js/voiceloop.fsg.js"></script>
+	<script src="shared/voiceloop.words.js"></script>
+	<script src="shared/voiceloop.fsg.js"></script>
 
 	<!-- stt: pocketsphinx.js -->
-	<script src="shared/js/audioRecorder.js"></script>
-	<script src="shared/js/callbackManager.js"></script>
-
-        <!-- stt and controls -->
-	<script src="js/main_trainee.js"></script>
-	<script src="shared/js/my_stt.js"></script> 
+	<script src="js/audioRecorder.js"></script>
+	<script src="js/libs/callbackManager.js"></script>
 
 	<!-- tts: meSpeak.js  -->
-	<script type="text/javascript" src="shared/js/mespeak.js"></script>
+	<script type="text/javascript" src="js/libs/mespeak.js"></script>
 
-	<!-- message handling -->
-	<script src="js/messages.js"></script>
-
-	<!-- Load D3 
+	<!-- visuals: d3.js 
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
 	<script src="js/libs/d3.min.js" charset="utf-8"></script>
-	<script src="js/myD3.js" charset="utf-8"></script>
+
+        <!-- stt handling and controls -->
+	<script src="js/main_trainee.js"></script> 
+	<script src="js/messages.js"></script>	<!-- minimal message handling wrapper-->
+	<script src="js/d3-agents.js" charset="utf-8"></script> <!-- dynamic visualisation -->
+	<script src="js/stt.js"></script>  <!-- stt handling -->
+
+
+
+
+
 
 
   </body>

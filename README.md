@@ -1,18 +1,7 @@
-Gumby Framework [![Build Status](https://travis-ci.org/GumbyFramework/Gumby.png?branch=master)](https://travis-ci.org/GumbyFramework/Gumby)
+MATES web client
 =====================
 
-Gumby Framework is a flexible, responsive CSS Framework, Powered by SASS. Create rapid and logical page layout and app
-prototypes with a flexible and responsive grid system and UI kit.
-
-Full documentation can be found at [http://gumbyframework.com](http://gumbyframework.com/docs).
-
-More information, including our changelog, can be found in the [Wiki](https://github.com/GumbyFramework/Gumby/wiki).
-
-Our [Google Plus Community](https://plus.google.com/u/0/communities/108760896951473344451) is rapidly growing, we recommend heading over there with any questions you may have or to geek out and discuss the framework and rwd in general.
-
-Gumby is developed with love by your friends at [Digital Surgeons](http://www.digitalsurgeons.com).
-
-Gumby has a few dependencies. Big thank you to the innovative geniuses behind these awesome technologies.
+Based on Gumby Framework which is published under MIT license (see below) and has following dependencies:
 
 - [Sass](https://github.com/nex3/sass) - Nathan Weizenbaum
 - [Compass](https://github.com/chriseppstein/compass) - Chris Eppstein
@@ -20,6 +9,14 @@ Gumby has a few dependencies. Big thank you to the innovative geniuses behind th
 - [FitText](http://fittextjs.com/) - Paravel
 - [jQuery](http://jquery.com/)
 - [Modernizr](http://modernizr.com/)
+
+Further, the following js libs are heavily used:
+- [pocketsphinx.js](http://syl22-00.github.io/pocketsphinx.js/)
+- [mespeak.js](http://www.masswerk.at/mespeak/)
+
+This project itself, though open for anyone who looks for inspiration is not "published" yet as the licensing is not clear yet (in other words look but don't touch or copy yet, please).
+
+
 
 **MIT Open Source License**
 

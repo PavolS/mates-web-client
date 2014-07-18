@@ -142,7 +142,7 @@
 		
 		// here we spawn the recognizer worker
 		//
-		spawnWorker("js/recognizer.js", function(worker) {
+		spawnWorker("js/pocketsphinx/recognizer.js", function(worker) {
 		    // This is the onmessage function, once the worker is fully loaded
 		    worker.onmessage = function(e) {
 		        // This is the case when we have a callback id to be called
