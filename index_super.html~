@@ -52,111 +52,7 @@
 		<h4> <span id="server"> </span> (<span id="status"> starting </span>) </h4>
 	</div>
 
-	<div id="loop-tables_and_graph" class="row">
-
-		<div id="loop-tables" class="seven columns" >
-			<section class="tabs" >
-
-			    <ul class="tab-nav">
-				<li class="active"><a href="#">Loop 1</a></li>
-				<li> <a href="#">Loop 2</a></li>
-			    </ul>
-
-			    <div class="tab-content active">
-				<p><br/></p>
-				<div id='loop1-div'  style = "max-height:250px; overflow:auto"><table>
-					<thead>
-					</thead>
-					<tbody id='loop1-table'>
-					</tbody>
-				</table></div>
-			    </div>
-
-			    <div class="tab-content">
-				<p>Only one loop is supported at the momment, sorry.</p>
-			    </div>
-
-			</section>
-
-		</div>
-
-		<div id="graph" class="five columns" >
-		</div>
-
-
-	</div>
-
-
-	<div class="row"  style = "min-height:40px;">
-		<div id="details" class="hideme" >
-			<div class="one columns">
-			</div>
-			<div class="five columns">
-				<select id='id'>
-				  <option value="som">SOM</option>
-				  <option value="soe">SOE</option>
-				  <option value="spacon">SPACON</option>
-				</select>
-				<select id='intent'>
-				  <option value="tell">tell</option>
-				  <option value="untell">untell</option>
-				</select>
-				<select id='to'>
-				  <option value="spacon">SPACON</option>
-				  <option value="soe">SOE</option>
-				  <option value="som">SOM</option>
-				  <option value="loop">LOOP 1</option>
-				</select>
-			</div>
-		</div>
-	</div>
-
-	<div class="row" style = "min-height:80px;">
-		<div class="one columns">
-			<div id="startStopBtn-div" class="medium oval btn">
-				<button id="startStopBtn" ><i class="icon-mic"></i></button>
-			</div>
-			<div id="interruptBtn-div" class="medium danger oval btn" style="display: none">
-				<button id="interruptBtn" onclick="onInterrupt()"><i class="icon-cancel"></i></button>
-			</div>
-		</div>
-
-		<div class="eight columns">
-			<div class="prepend append field">
-			    <button class="adjoined toggle" gumby-trigger="#details"><i class="icon-search"></i></button>
-			    <input id='msg' class="xwide text input" type="text" placeholder="voiceloop messge" />
-			    <div class="medium primary btn"><button  id="sendBtn" onclick="onSend()"><i class="icon-sound"></i></button></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row bottom-offset">
-	</div>
-
-
-	<div class="row bottom" >
-		<section class="tabs" >
-
-		    <ul class="tab-nav">
-			<li><a href="#">Recognition output</a></li>
-			<li> <a href="#">Voice loop (rabbitMQ)</a></li>
-			<li class="active"> <a href="#">Client status (log)</a></li>
-		    </ul>
-
-		    <div class="tab-content bottom">
-			<div id="rec-output" > </div>
-		    </div>
-
-		    <div class="tab-content bottom">
-			<div id="output" ></div>
-		    </div>
-
-		    <div class="tab-content bottom active">
-			<div id="current-status" >Loading page</div>
-		    </div>
-
-		</section>
-	</div>
+	<div id="output" class="row" style = "max-height:600px; overflow:auto"></div>
 
 
 	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
@@ -227,29 +123,10 @@
 
 
 
-	<!-- grammar for voicellop -->
-	<script src="shared/js/voiceloop.words.js"></script>
-	<script src="shared/js/voiceloop.fsg.js"></script>
-
-	<!-- stt: pocketsphinx.js -->
-	<script src="shared/js/audioRecorder.js"></script>
-	<script src="shared/js/callbackManager.js"></script>
-
-        <!-- stt and controls -->
-	<script src="js/main_trainee.js"></script>
-	<script src="shared/js/my_stt.js"></script> 
-
-	<!-- tts: meSpeak.js  -->
-	<script type="text/javascript" src="shared/js/mespeak.js"></script>
-
-	<!-- message handling -->
-	<script src="js/messages.js"></script>
-
-	<!-- Load D3 
-	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
-	<script src="js/libs/d3.min.js" charset="utf-8"></script>
-	<script src="js/myD3.js" charset="utf-8"></script>
-
+        <!-- controls -->
+	<script src="js/config.js"></script> 
+	<script src="js/main_super.js"></script>
+	<script src="js/stt.js"></script> 
 
   </body>
 </html>

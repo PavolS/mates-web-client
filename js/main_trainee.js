@@ -1,5 +1,4 @@
   // mq(ws)
-  var wsUri = "ws://172.16.128.113:8081/voice";
   var connected = false;
 
   // stt: These will be initialized later
