@@ -22,11 +22,11 @@ table {
 	width: 960px / 12 * 7 * 0.9;
 
 	@include respond(landscape-phones) {
-	   width: $tablet-device-width * 0.8;
+	   width: $tablet-device-width * 0.6;
 	}
 
 	@include respond(portrait-phones) {
-	   width: $min-device-width * 0.8;
+	   width: $min-device-width * 0.7;
 	}
 
 	tr td:first-child {
@@ -65,11 +65,11 @@ table {
 	width: 70%;
 
 	@include respond(landscape-phones) {
-	   width: $tablet-device-width * 0.6;
+	   width: $tablet-device-width * 0.45;
 	}
 
 	@include respond(portrait-phones) {
-	   width: $min-device-width * 0.5;
+	   width: $min-device-width * 0.4;
 	}
 }
 

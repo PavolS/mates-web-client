@@ -1688,8 +1688,8 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 @media only screen and (max-width: 380px) { .valign:before { height: 90px; } }
 
 table { width: 504px; }
-@media only screen and (min-width: 381px) and (max-width: 767px) { table { width: 614.4px; } }
-@media only screen and (max-width: 380px) { table { width: 304px; } }
+@media only screen and (min-width: 381px) and (max-width: 767px) { table { width: 460.8px; } }
+@media only screen and (max-width: 380px) { table { width: 266px; } }
 table tr td:first-child { width: 60px; font-weight: bold; }
 table tr td:nth-child(2) { width: 384px; font-weight: regular; }
 table tr td:nth-child(3) { width: 60px; font-weight: bold; }
@@ -1699,8 +1699,8 @@ table tr td:nth-child(3) { width: 60px; font-weight: bold; }
 @media only screen and (max-width: 380px) { #loop1-div { max-height: 200px; min-height: 200px; } }
 
 #msg { width: 70%; }
-@media only screen and (min-width: 381px) and (max-width: 767px) { #msg { width: 460.8px; } }
-@media only screen and (max-width: 380px) { #msg { width: 190px; } }
+@media only screen and (min-width: 381px) and (max-width: 767px) { #msg { width: 345.6px; } }
+@media only screen and (max-width: 380px) { #msg { width: 152px; } }
 
 .hideme { display: none; }
 
