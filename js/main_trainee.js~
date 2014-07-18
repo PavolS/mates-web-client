@@ -263,9 +263,10 @@ function updateStatus() {
 
 		document.getElementById("startBtn-div").style.display = 'none';
 		document.getElementById("stopBtn-div").style.display = 'none';
-
 		document.getElementById("startStopBtn-div").style.display = 'none';
+
 		document.getElementById("interruptBtn-div").style.display = 'inline-block';
+		document.getElementById("interruptPhoneBtn-div").style.display = 'inline-block';
 
 
 		send_to-=1;
@@ -284,10 +285,11 @@ function updateStatus() {
 		clearInterval(send_interval);
 
 		document.getElementById("startBtn-div").style.display = 'inline-block';
-		document.getElementById("stopBtn-div").style.display = 'inline-block';
-
+		document.getElementById("stopBtn-div").style.display = 'none';
 		document.getElementById("startStopBtn-div").style.display = 'inline-block';
-		document.getElementById("interruptBtn-div").style.display = 'none';
+
+		document.getElementById("interruptBtn-div").style.display = 'inline-block';
+		document.getElementById("interruptPhoneBtn-div").style.display = 'none';
                 document.getElementById("sendBtn").innerHTML = send_inner;
 	}
 

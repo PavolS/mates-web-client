@@ -46,7 +46,7 @@ html { font-size: 16px; line-height: 1.625em; }
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 body { background: white; font-family: "Open Sans"; font-weight: 400; color: #555555; position: relative; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-@media only screen and (max-width: 767px) { body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; } }
+@media only screen and (max-width: 767px) { body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; min-width: 0; } }
 
 html, body { height: 100%; }
 
@@ -624,7 +624,6 @@ html, body { height: 100%; }
 
 .fixed { position: fixed; }
 .fixed.pinned { position: absolute; }
-@media only screen and (max-width: 768px) { .fixed { position: relative !important; top: auto !important; left: auto !important; } }
 
 .unfixed { position: relative !important; top: auto !important; left: auto !important; }
 
@@ -1685,11 +1684,19 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 .row.bottom-offset { min-height: 50px; }
 
 .valign:before { height: 150px; }
+@media only screen and (max-width: 320px) { .valign:before { height: 90px; } }
+@media only screen and (min-width: 321px) and (max-width: 767px) { .valign:before { height: 60px; } }
 
 table { width: 504px; }
+@media only screen and (min-width: 321px) and (max-width: 767px) { table { width: 614.4px; } }
+@media only screen and (max-width: 320px) { table { width: 256px; } }
 table tr td:first-child { width: 60px; font-weight: bold; }
 table tr td:nth-child(2) { width: 384px; font-weight: regular; }
 table tr td:nth-child(3) { width: 60px; font-weight: bold; }
+
+#loop1-div { overflow: auto; max-height: 250px; }
+@media only screen and (min-width: 321px) and (max-width: 767px) { #loop1-div { max-height: 200px; min-height: 200px; } }
+@media only screen and (max-width: 320px) { #loop1-div { max-height: 300px; min-height: 300px; } }
 
 .hideme { display: none; }
 
@@ -1700,14 +1707,12 @@ table tr td:nth-child(3) { width: 60px; font-weight: bold; }
 .tab-content.bottom { max-height: 150px; min-height: 150px; overflow: auto; }
 
 @media only screen and (max-width: 767px) { .not-on-phones { display: none !important; } }
-@media only screen and (min-width: 768px) and (max-width: 939px) { .not-on-phones { display: none !important; } }
 
 @media only screen and (min-width: 768px) { .only-on-phones { display: none !important; } }
 
-@media only screen and (min-width: 768px) { /* Your font is so big, it's absurd! */ }
 @media only screen and (min-width: 768px) { .text.input { width: 82.66667%; } }
-@media only screen and (max-width: 320px) { .text.input { width: 30.66667%; } }
-@media only screen and (min-width: 321px) and (max-width: 767px) { .text.input { width: 48%; } }
+@media only screen and (min-width: 321px) and (max-width: 767px) { .text.input { width: 65.33333%; } }
+@media only screen and (max-width: 320px) { .text.input { width: 48%; } }
 svg { background-color: #FFF; cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; }
 
 svg:not(.active):not(.ctrl) { cursor: crosshair; }
