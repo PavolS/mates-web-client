@@ -156,7 +156,11 @@ function updateStatus() {
 		send_interval = setInterval(function(){sendBtn_countDown()},1000);
 
 	} else {
-		console.log('bad rec: "' + rec + '"');
+		console.log('bad rec: "' + rec + ', adding dummy for testing"');
+		onFinalRecognition("SOM ON LOOP ONE HELLO-TEST EVERYONE");
+		display_speechact(
+			{ intent: '', speaker: _from.toLowerCase(), content: 'hello-forced' }
+		);
 	}
   }
 

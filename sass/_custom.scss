@@ -8,12 +8,13 @@ $bottom-tabs-height: 150px;
 
 .valign:before {
 	height: 150px;
-	@include respond(portrait-phones) {
-	   height: 90px;
-	}
 	@include respond(landscape-phones) {
 	   height: 60px;
 	}
+	@include respond(portrait-phones) {
+	   height: 90px;
+	}
+
 }
 
 table {
@@ -50,13 +51,25 @@ table {
     max-height:250px; 
 
 	@include respond(landscape-phones) {
-	   max-height: 200px;
-	   min-height: 200px;
+	   max-height: 100px;
+	   min-height: 100px;
 	}
 
 	@include respond(portrait-phones) {
-	   max-height: 300px;
-	   min-height: 300px;
+	   max-height: 200px;
+	   min-height: 200px;
+	}
+}
+
+#msg {
+	width: 70%;
+
+	@include respond(landscape-phones) {
+	   width: $tablet-device-width * 0.6;
+	}
+
+	@include respond(portrait-phones) {
+	   width: $min-device-width * 0.5;
 	}
 }
 
@@ -107,7 +120,7 @@ table {
 }
 
 @include respond(portrait-phones) {
-  .text.input { @include input-size(normal); }
+  .text.input { @include input-size(wide); }
 }
 
 

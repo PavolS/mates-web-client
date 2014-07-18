@@ -47,8 +47,9 @@
 		<div><h1>MATES</h1></div> <div><h2/><h2>trainee</h2></div>
 	</div>
 
-	<div class="valign row only-on-phones">
-		<div><h2>MATES</h2></div>
+	<div class="row only-on-phones">
+		<div class="row switch" style="float:right"><h2>MATES</h2></div>
+		<div class="row switch" style="float:right"><h4>mobile</h4></div>
 	</div>
 
 	<div class="row" style="display:none;">
@@ -67,7 +68,7 @@
 
 			    <div class="tab-content active">
 				<p><br/></p>
-				<div id='loop1-div'  style = "max-height:250px; overflow:auto"><table>
+				<div id='loop1-div'  ><table>
 					<thead>
 					</thead>
 					<tbody id='loop1-table'>

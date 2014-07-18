@@ -144,7 +144,7 @@ $drawer-inner-shadow-color: #313436;
 // Tables
 $table-bgcolor: #fff;
 $table-thead-bgcolor: $primary-color;
-$table-row-first-cell-font-weight: bold;
+$table-row-first-cell-font-weight: regular;
 $table-border-size: 1px;
 $table-border-style: solid;
 $table-border-color: #e5e5e5;
