@@ -1,4 +1,5 @@
   // mq(ws)
+  var wsUri = 'ws://' + wsHost +':' + wsPort + '/voice';
   var connected = false;
 
   // stt: These will be initialized later

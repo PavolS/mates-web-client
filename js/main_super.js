@@ -1,4 +1,5 @@
   var output;
+  var wsUri = 'ws://' + wsHost +':' + wsPort + '/supervisor'; 
 
 
   function init()

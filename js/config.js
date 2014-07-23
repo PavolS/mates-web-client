@@ -1,2 +1,3 @@
-var wsUri = "ws://172.16.128.113:8081/voice";
+var wsHost = "172.16.128.113";
+var wsPort = "8081";
 
