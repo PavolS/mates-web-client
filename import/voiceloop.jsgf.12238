@@ -1,0 +1,104 @@
+#JSGF V1.0;
+/**
+ * JSGF Grammar for SCO voiceloop (with SOM as the only speaker and SOE, SPACON agents, plus LOOP ONE)
+ */
+
+
+grammar voiceloop;
+
+//
+
+// choose a scenario (and update the <content> accordingly)
+// - for now, here a scenario refers to a set
+// of valid contents (exported as <$scenario.content> without noise)
+// the agents as such are fixed at the moment
+//
+
+
+// the only public, i.e. the only (final) accepted statement
+//
+public <voiceloop> = <voiceloop_standard> | <voiceloop_broadcast>;
+
+
+// voiceloop composition
+//
+<voiceloop_broadcast> = <speaker> on LOOP ONE <voiceloop.content> everyone;
+<voiceloop_standard> = <target> <speaker> <voiceloop.content>;
+
+<speaker> = <fromto.from1> SOM <fromto.from2>;
+<target> = <fromto.to> <polite.to> SOE | SPACON;
+
+//
+<voiceloop.content> = <fill.start> <polite.start> <demo.content> ( <polite.end> | <fill.end> );
+
+
+
+// Start merge with /lhome1/pavol/git-repos/mates-grammars/data/noise/fill.jsgf:fill ...
+<fill.start> = [ well | so | could you | by the way | anyhow | however | <fill.startOrEndFill> ];
+<fill.end> = [ I think | I hope | <fill.startOrEndFill> ];
+<fill.startOrEndFill> = [ anyway | still | never the less ];
+// .. end merge with /lhome1/pavol/git-repos/mates-grammars/data/noise/fill.jsgf:fill.
+
+// Start merge with /lhome1/pavol/git-repos/mates-grammars/data/noise/fromto.jsgf:fromto ...
+<fromto.from1> = <NULL> | this is | here | here ( is | speaks )  ;
+<fromto.from2> = <NULL> | speaking | calling;
+<fromto.to> = <NULL> | to | addressing | reaching | for ;
+// .. end merge with /lhome1/pavol/git-repos/mates-grammars/data/noise/fromto.jsgf:fromto.
+
+// Start merge with /lhome1/pavol/git-repos/mates-grammars/data/noise/polite.jsgf:polite ...
+<polite.start> = (please | kindly | could you) *;
+<polite.to> = ( my | <NULL> ) very * (dear | dearest) *;
+<polite.end> = [ please | thanks | thank you ];
+// .. end merge with /lhome1/pavol/git-repos/mates-grammars/data/noise/polite.jsgf:polite.
+
+// Start merge with /lhome1/pavol/git-repos/mates-grammars/data/phoneticAlphabet/dictFriendly.jsgf:phoneticAlphabet ...
+<phoneticAlphabet.spelling> = <phoneticAlphabet.spelling-letter>* ;
+<phoneticAlphabet.spelling-letter> = 
+	Alpha | 
+	Juliet | 
+	Sierra | 
+	Bravo | 
+	Kilo | 
+	Tango | 
+	Charlie | 
+	Lima | 
+	Uniform | 
+	Delta | 
+	Mike | 
+	Victor | 
+	Echo | 
+	November | 
+	Whiskey | 
+	Foxtrot | 
+	Oscar | 
+	X ray | 
+	Golf | 
+	Papa | 
+	Yankee | 
+	Hotel | 
+	Quebec | 
+	Zulu | 
+	India | 
+	Romeo | 
+	one | 
+	five | 
+	nine | 
+	two | 
+	six | 
+	zero | 
+	three | 
+	seven |
+	decimal | 
+	four | 
+	ate | 
+	thousand ;
+// .. end merge with /lhome1/pavol/git-repos/mates-grammars/data/phoneticAlphabet/dictFriendly.jsgf:phoneticAlphabet.
+
+// Start merge with /lhome1/pavol/git-repos/mates-grammars/data/galileo-voice-loop/demo.jsgf:demo ...
+<demo.content> = <demo.content_lim> | <demo.content_inv> | <demo.content_hi> | <demo.content_repeat> ;
+<demo.content_lim> = change limits;
+<demo.content_inv> = investigate parameter <phoneticAlphabet.spelling>;
+<demo.content_hi> = hi | hello | good morning;
+<demo.content_repeat> = repeat ( that | <NULL> );
+// .. end merge with /lhome1/pavol/git-repos/mates-grammars/data/galileo-voice-loop/demo.jsgf:demo.
+

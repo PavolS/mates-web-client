@@ -1,0 +1,50 @@
+SPACON SOM change limits  
+SOE SOM repeat that  
+SPACON SOM good morning  
+SOM on LOOP ONE investigate parameter SPELLING everyone  
+SOE SOM hi  
+SOM on LOOP ONE hello everyone  
+SOM on LOOP ONE change limits everyone  
+SOE SOM investigate parameter SPELLING  
+SOM on LOOP ONE repeat everyone  
+SPACON SOM hi  
+SPACON SOM hello  
+SPACON SOM hi  
+SOE SOM investigate parameter SPELLING  
+SPACON SOM change limits  
+SOE SOM repeat that  
+SOM on LOOP ONE hi everyone  
+SOE SOM repeat that  
+SPACON SOM good morning  
+SOE SOM change limits  
+SOM on LOOP ONE investigate parameter SPELLING everyone  
+SOM on LOOP ONE change limits everyone  
+SPACON SOM repeat that  
+SOM on LOOP ONE change limits everyone  
+SOM on LOOP ONE repeat everyone  
+SOM on LOOP ONE hi everyone  
+SOE SOM investigate parameter SPELLING  
+SOM on LOOP ONE investigate parameter SPELLING everyone  
+SOM on LOOP ONE good morning everyone  
+SPACON SOM hello  
+SOE SOM hi  
+SOM on LOOP ONE repeat everyone  
+SPACON SOM change limits  
+SPACON SOM good morning  
+SOM on LOOP ONE good morning everyone  
+SPACON SOM repeat that  
+SPACON SOM investigate parameter SPELLING  
+SOE SOM change limits  
+SOE SOM investigate parameter SPELLING  
+SOM on LOOP ONE repeat that everyone  
+SPACON SOM repeat that  
+SOE SOM investigate parameter SPELLING  
+SPACON SOM change limits  
+SOE SOM hi  
+SOE SOM change limits  
+SOM on LOOP ONE hello everyone  
+SPACON SOM investigate parameter SPELLING  
+SPACON SOM hello  
+SOM on LOOP ONE repeat that everyone  
+SOM on LOOP ONE investigate parameter SPELLING everyone  
+SPACON SOM hi  
