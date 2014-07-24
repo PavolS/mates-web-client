@@ -134,9 +134,13 @@ function updateStatus() {
 	if (operator) {
 		_from = operator.toUpperCase();
 	}
+
+	// TODO: this is one of the things which needs to be shared across MATES
+	var _to_opts = "(SOM|SOE|SPACON)"
 	
-	var re_speechact = new RegExp("([A-Z]*) " + _from + " (.+)");
-	var re_speechact_loop = new RegExp(_from + " ON (LOOP) ONE (.+) EVERYONE");
+	// TODO: These ought to be parsed from the grammars somehow
+	var re_speechact = new RegExp(".*" + _to_opts + " .*" + _from + " (.+)");
+	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+) EVERYONE .*");
 
 	var _act; // an array to be filled by either re, if it matches
 
@@ -295,7 +299,12 @@ function updateStatus() {
                 document.getElementById("sendBtn").innerHTML = send_inner;
 	}
 
-
+   // scenario control
+	function onScenario(action) {
+		console.log('Send ' + action + ' to supervisor.');
+		var msg = new SpeechAct('tell', 'som', 'supervisor', action);
+		doSend( JSON.stringify(msg) );
+	}
 
 
 

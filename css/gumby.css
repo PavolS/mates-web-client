@@ -1706,9 +1706,9 @@ table tr td:nth-child(3) { width: 60px; font-weight: bold; }
 
 .hideme.active { display: block; }
 
-.row.bottom { max-height: 192px; min-height: 192px; }
+.row.bottom { max-height: 292px; min-height: 292px; }
 
-.tab-content.bottom { max-height: 150px; min-height: 150px; overflow: auto; }
+.tab-content.bottom { max-height: 250px; min-height: 250px; overflow: auto; }
 
 @media only screen and (max-width: 767px) { .not-on-phones { display: none !important; } }
 

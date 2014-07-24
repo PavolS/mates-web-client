@@ -1,6 +1,6 @@
 // MATES custom SCSS 
 
-$bottom-tabs-height: 150px;
+$bottom-tabs-height: 250px;
 
 .row.bottom-offset {
 	min-height: 50px; 
@@ -92,8 +92,6 @@ table {
 	overflow:auto;
 }
 
-//  #loop-tables { @include columns(7); }
-//  #graph { @include columns(5); }
 
 // goRESPONSIVE!
 //  - we consider only phones for now
@@ -107,8 +105,6 @@ table {
 .only-on-phones {
 	@include hidden(desktop);
 }
-
-// graph and loops
 
 // input size
 @include respond(desktop) {
