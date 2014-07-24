@@ -6,6 +6,8 @@
   var recognizer, recorder, callbackManager, audioContext, outputContainer, grammar_id;
   // stt: Only when both recorder and recognizer do we have a ready application
   var recorderReady = recognizerReady = false;
+  // stt: finally find the best fitting "core" speech act
+  var core_speechacts = [];
  
   // mq,tts
   var output, operator;
@@ -34,6 +36,9 @@
 
     // connect the loop
     openWebSocket();
+
+    // read the core speechacts
+    read_core_grammar();
 
   }
 
@@ -130,6 +135,10 @@ function updateStatus() {
   // ws -- stt interface
   function onFinalRecognition(rec)
   {
+
+	// Primitive NLP simulation
+	if ( rec ) { rec = get_best_core_fit(rec) };
+
 	var _from = "SOM";
 	if (operator) {
 		_from = operator.toUpperCase();
@@ -304,6 +313,60 @@ function updateStatus() {
 		console.log('Send ' + action + ' to supervisor.');
 		var msg = new SpeechAct('tell', 'som', 'supervisor', action);
 		doSend( JSON.stringify(msg) );
+	}
+
+	function read_core_grammar() {
+		var lines;
+		jQuery.get('shared/core/voiceloop.examples.count.txt', function(data) {
+			console.log("CORE SPEECHACTs:\n" + data);
+			lines = jQuery.map( data.replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
+			  return [ n.replace(/\d/g,'').replace(/\s\s*/g, ' ').replace(/^ | $/g, '').split(/ /g) ];
+			});
+			console.log(JSON.stringify(lines));
+			core_speechacts = lines;
+
+			get_best_core_fit("This is a silly test for the investigate parameter es pi ell ee nn gg");
+		});
+	}
+
+	function get_best_core_fit(msg) {
+		var top_score = 0, core_fit = null, buf = [];
+
+		jQuery.map( core_speechacts, function( act, i ) {
+			  var score_obj = _get_score(act, msg);
+			  var new_score = score_obj.score;
+			  console.log(JSON.stringify(act) + ' scored ' + new_score + ' buf: ' +  score_obj.buf.join(' ') );
+			  if ( new_score > top_score ) {
+				console.log( 'New best!');
+				core_fit = act;
+				top_score = new_score;
+				buf = score_obj.buf;
+			  }
+		});
+			
+		var i = core_fit.indexOf('SPELLING');
+		if ( i > -1 && buf.length > 0 ) {
+			core_fit[i] = buf.join(' ');
+		}
+
+		console.log('Final fit: ' + core_fit.join(' ') );
+
+
+		return core_fit.join(' ');
+	}
+
+	function _get_score(act, msg) {
+		var hits = 0, buf = msg.split(' '), ind = 0;
+
+		jQuery.map( act, function( word, i ) {
+			var j = buf.indexOf(word);
+			if ( j > -1 ) {
+				hits++;
+				buf.splice(0,j+1);
+			}
+		});
+
+		return { 'score': hits/act.length - buf.length/1e5, 'buf': buf };
 	}
 
 

@@ -150,22 +150,25 @@
 		<section class="tabs" >
 
 		    <ul class="tab-nav">
-			<li><a href="#">Help</a></li>
+			<li class = "active"><a href="#">Help</a></li>
 			<li><a href="#">Scenario</a></li>
 			<li><a href="#">Recognition</a></li>
 			<li> <a href="#">RabbitMQ</a></li>
-			<li class="active"> <a href="#">Client log</a></li>
+			<li> <a href="#">Client log</a></li>
+			<li> <a href="#">Examples</a></li>
 		    </ul>
 
 
 
-		    <div class="tab-content" >
+		    <div class="tab-content active" >
 			<p>
 			This client allows you to communicate with the MATES training system either directly via typing a message and hitting the blue send button or 
 			via our speach to text processing, once you enabled the microphone access (the mic button gets green). Simply push the button, speak the message, and release the button.
 			</p>				
 			<p>
-			The connection and registration are handled automatically, when a connection is active, the loop circle is green. The tabs in the bottom section (here) allow you to further monitor what is 				going on behind the scenes in more detail. 
+			The connection and registration are handled automatically, when a connection is active, the loop circle is green. When agents speak, they appear as additional circles connected to the
+			loop and their messages are displayed next to them. The loop communication is protocolled also
+			in the corresponding loop tab above. The tabs in the bottom section (here) allow you to further monitor what is going on behind the scenes in more detail. 
 			</p>	
 			<p>
 			You can see the expected messages in the scenario tab, where you can also start/stop and restart the training scenario.
@@ -201,9 +204,12 @@
 		    <div class="tab-content bottom" id="output">
 		    </div>
 
-		    <div class="tab-content bottom active" id="current-status">
+		    <div class="tab-content bottom" id="current-status">
 			Loading page
 		    </div>
+
+		    <iframe class="tab-content bottom twelve columns" src="shared/voiceloop.examples.count.txt" seamless>
+		    </iframe>
 
 		</section>
 	</div>
