@@ -136,8 +136,7 @@ function updateStatus() {
   function onFinalRecognition(rec)
   {
 
-	// Primitive NLP simulation
-	if ( rec ) { rec = get_best_core_fit(rec) };
+	console.log("on final...");
 
 	var _from = "SOM";
 	if (operator) {
@@ -145,36 +144,47 @@ function updateStatus() {
 	}
 
 	// TODO: this is one of the things which needs to be shared across MATES
-	var _to_opts = "(SOM|SOE|SPACON)"
-	
+	var _to_opts = '(SOM|SOE|SPACON)';
+
 	// TODO: These ought to be parsed from the grammars somehow
 	var re_speechact = new RegExp(".*" + _to_opts + " .*" + _from + " (.+)");
-	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+) EVERYONE .*");
+	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+) EVERYONE.*");
+	console.log('About to test regex fit for msg: ' + JSON.stringify(rec));
 
-	var _act; // an array to be filled by either re, if it matches
+	// TODO: Primitive workaround as NLP simulation
+	if ( re_speechact.test(rec) || re_speechact_loop.test(rec) ) { 
+		console.log('Original msg\n' + rec + '\nroughly fits expected recognition...');
 
-	if ( ( re_speechact.test(rec) && (_act = re_speechact.exec(rec)) )  || 
-	     ( re_speechact_loop.test(rec) && (_act = re_speechact_loop.exec(rec)) )
-           )
-	{
+		var best_fit = get_best_core_fit(rec);
 
-		console.log('ok rec: ' + JSON.stringify(_act) );
+		console.log('Best fit:\n' + best_fit);
 
-		var _to = _act[1].toLowerCase();
-		var _msg = _act[2].toLowerCase();
+		var _act = []; // an array to be filled by either re, if it still matches
 
-		document.getElementById("to").value = _to;
-		document.getElementById("msg").value = _msg;
+		if ( ( re_speechact.test(best_fit) && (_act = re_speechact.exec(best_fit)) )  || 
+		     ( re_speechact_loop.test(best_fit) && (_act = re_speechact_loop.exec(best_fit)) )
+		   )
+		{
+
+			console.log('ok rec: ' + JSON.stringify(_act) );
+
+			var _to = _act[1].toLowerCase();
+			var _msg = _act[2].toLowerCase();
+
+			document.getElementById("to").value = _to;
+			document.getElementById("msg").value = _msg;
 	
-		send_interval = setInterval(function(){sendBtn_countDown()},1000);
+			send_interval = setInterval(function(){sendBtn_countDown()},1000);
+			return true;
+		};
+	};
 
-	} else {
-		console.log('bad rec: "' + rec + ', adding dummy for testing"');
-		onFinalRecognition("SOM ON LOOP ONE HELLO-TEST EVERYONE");
-		display_speechact(
-			{ intent: '', speaker: _from.toLowerCase(), content: 'hello-forced' }
-		);
-	}
+	console.log('bad rec: "' + rec + ', adding dummy for testing"');
+	// too dangerous onFinalRecognition("SOM ON LOOP ONE HELLO-TEST EVERYONE");
+	display_speechact(
+		{ intent: '', speaker: _from.toLowerCase(), content: 'hello-forced' }
+	);
+	return false;
   }
 
   function onMicOk()
@@ -319,7 +329,7 @@ function updateStatus() {
 		var lines;
 		jQuery.get('shared/core/voiceloop.examples.count.txt', function(data) {
 			console.log("CORE SPEECHACTs:\n" + data);
-			lines = jQuery.map( data.replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
+			lines = jQuery.map( data.toUpperCase().replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
 			  return [ n.replace(/\d/g,'').replace(/\s\s*/g, ' ').replace(/^ | $/g, '').split(/ /g) ];
 			});
 			console.log(JSON.stringify(lines));
@@ -332,8 +342,10 @@ function updateStatus() {
 	function get_best_core_fit(msg) {
 		var top_score = 0, core_fit = null, buf = [];
 
+		if ( core_speechacts.length <= 0 ) return msg;
+
 		jQuery.map( core_speechacts, function( act, i ) {
-			  var score_obj = _get_score(act, msg);
+			  var score_obj = _get_score(act, msg.toUpperCase() );
 			  var new_score = score_obj.score;
 			  console.log(JSON.stringify(act) + ' scored ' + new_score + ' buf: ' +  score_obj.buf.join(' ') );
 			  if ( new_score > top_score ) {
