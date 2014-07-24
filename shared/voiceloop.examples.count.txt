@@ -1,17 +1,20 @@
-      3 SOE SOM change limits  
-      3 SOE SOM hi  
-      5 SOE SOM investigate parameter SPELLING  
-      3 SOE SOM repeat that  
-      3 SOM on LOOP ONE change limits everyone  
-      2 SOM on LOOP ONE good morning everyone  
-      2 SOM on LOOP ONE hello everyone  
-      2 SOM on LOOP ONE hi everyone  
-      4 SOM on LOOP ONE investigate parameter SPELLING everyone  
-      3 SOM on LOOP ONE repeat everyone  
-      2 SOM on LOOP ONE repeat that everyone  
-      4 SPACON SOM change limits  
-      3 SPACON SOM good morning  
-      3 SPACON SOM hello  
-      3 SPACON SOM hi  
-      2 SPACON SOM investigate parameter SPELLING  
-      3 SPACON SOM repeat that  
+     31 
+      1 addressing dear dear dear SOE this is SOM repeat  
+      1 addressing dearest SOE SOM hi thanks  
+      1 dear dearest SOE this is SOM still change limits  
+      1 dearest SOE SOM however kindly repeat never the less  
+      1 dear SOE SOM hello anyway  
+      1 dear SOE SOM so hi please  
+      1 for SOE here SOM change limits  
+      1 for SOE this is SOM good morning I think  
+      1 my SOE this is SOM please change limits anyway  
+      1 my very SOE here SOM anyway change limits anyway  
+      1 reaching dearest SOE SOM could you hi thank you  
+      1 reaching dear SOE SOM speaking change limits anyway  
+      1 reaching SOE SOM well change limits never the less  
+      1 SOE this is SOM kindly hello  
+      1 SOM speaking on LOOP ONE hello everyone  
+      1 SPACON SOM speaking investigate parameter Kilo I hope  
+      1 SPACON this is SOM by the way repeat still  
+      1 SPACON this is SOM still hi anyway  
+      1 to dear SOE SOM well hello thank you  

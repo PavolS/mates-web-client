@@ -1,6 +1,6 @@
 INFO: cmd_ln.c(691): Parsing command line:
 sphinx_jsgf2fsg \
-	-jsgf voiceloop.jsgf.2523 \
+	-jsgf voiceloop.jsgf.11350 \
 	-fsm voiceloop.fsm \
 	-symtab voiceloop.sym 
 
@@ -10,7 +10,7 @@ Current configuration:
 -fsg			
 -fsm			voiceloop.fsm
 -help		no	no
--jsgf			voiceloop.jsgf.2523
+-jsgf			voiceloop.jsgf.11350
 -rule			
 -symtab			voiceloop.sym
 

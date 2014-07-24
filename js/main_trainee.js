@@ -327,7 +327,7 @@ function updateStatus() {
 
 	function read_core_grammar() {
 		var lines;
-		jQuery.get('shared/core/voiceloop.examples.count.txt', function(data) {
+		jQuery.get('import/core/voiceloop.examples.count.txt', function(data) {
 			console.log("CORE SPEECHACTs:\n" + data);
 			lines = jQuery.map( data.toUpperCase().replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
 			  return [ n.replace(/\d/g,'').replace(/\s\s*/g, ' ').replace(/^ | $/g, '').split(/ /g) ];
