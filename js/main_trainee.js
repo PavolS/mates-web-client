@@ -133,7 +133,7 @@ function updateStatus() {
   }
 
   // ws -- stt interface
-  function onFinalRecognition(rec)
+  function onFinalRecognition(rec, internal)
   {
 
 	console.log("on final...");
@@ -148,41 +148,46 @@ function updateStatus() {
 
 	// TODO: These ought to be parsed from the grammars somehow
 	var re_speechact = new RegExp(".*" + _to_opts + " .*" + _from + " (.+)");
-	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+) EVERYONE.*");
-	console.log('About to test regex fit for msg: ' + JSON.stringify(rec));
+	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+)");
+	var _act = []; // an array to be filled by either re, if it still matches
 
-	// TODO: Primitive workaround as NLP simulation
-	if ( re_speechact.test(rec) || re_speechact_loop.test(rec) ) { 
+	if ( ( re_speechact.test(rec) && (_act = re_speechact.exec(rec)) )  || 
+	     ( re_speechact_loop.test(rec) && (_act = re_speechact_loop.exec(rec)) )
+	   )
+	{ 
 		console.log('Original msg\n' + rec + '\nroughly fits expected recognition...');
 
+		// TODO: Primitive workaround as NLP simulation
 		var best_fit = get_best_core_fit(rec);
-
-		console.log('Best fit:\n' + best_fit);
-
-		var _act = []; // an array to be filled by either re, if it still matches
 
 		if ( ( re_speechact.test(best_fit) && (_act = re_speechact.exec(best_fit)) )  || 
 		     ( re_speechact_loop.test(best_fit) && (_act = re_speechact_loop.exec(best_fit)) )
 		   )
 		{
 
-			console.log('ok rec: ' + JSON.stringify(_act) );
-
-			var _to = _act[1].toLowerCase();
-			var _msg = _act[2].toLowerCase();
-
-			document.getElementById("to").value = _to;
-			document.getElementById("msg").value = _msg;
-	
-			send_interval = setInterval(function(){sendBtn_countDown()},1000);
-			return true;
+			console.log('Valid best fit:\n' + best_fit);
 		};
+
+		console.log('Working with parsed recognition:' + JSON.stringify(_act) );
+
+		var _to = _act[1].toLowerCase();
+		var _msg = _act[2].toLowerCase();
+
+		document.getElementById("to").value = _to;
+		document.getElementById("msg").value = _msg;
+
+		showInterrupt();
+		send_interval = setInterval(function(){sendBtn_countDown()},1000);
+		return true;
+
 	};
 
 	console.log('bad rec: "' + rec + ', adding dummy for testing"');
-	// too dangerous onFinalRecognition("SOM ON LOOP ONE HELLO-TEST EVERYONE");
+        if (! internal) {
+		onFinalRecognition("SOM ON LOOP ONE INVESTIGATE PARAMETER THIS IS A TEST", true);
+	}
 	display_speechact(
-		{ intent: '', speaker: _from.toLowerCase(), content: 'hello-forced' }
+		{ intent: '', speaker: _from.toLowerCase(), content: 'test test' }
 	);
 	return false;
   }
@@ -287,14 +292,6 @@ function updateStatus() {
 		return onSend();
 	    } else if (send_to == send_to_nominal) {
 		console.log("send_to is nominal: " + send_to);
-
-		document.getElementById("startBtn-div").style.display = 'none';
-		document.getElementById("stopBtn-div").style.display = 'none';
-
-		document.getElementById("startStopBtn-div").style.display = 'none';
-		document.getElementById("interruptBtn-div").style.display = 'inline-block';
-
-
 		send_to-=1;
 	    } else {
 		send_to-=1;
@@ -304,6 +301,14 @@ function updateStatus() {
 	function onInterrupt() {
 		console.log("interrupt auto send!");
 		sendBtn_clear();
+	}
+
+	function showInterrupt() {
+		document.getElementById("startBtn-div").style.display = 'none';
+		document.getElementById("stopBtn-div").style.display = 'none';
+
+		document.getElementById("startStopBtn-div").style.display = 'none';
+		document.getElementById("interruptBtn-div").style.display = 'inline-block';
 	}
 
 	function sendBtn_clear() {
@@ -335,30 +340,31 @@ function updateStatus() {
 			console.log(JSON.stringify(lines));
 			core_speechacts = lines;
 
-			get_best_core_fit("This is a silly test for the investigate parameter es pi ell ee nn gg");
+			get_best_core_fit("This is a silly test for the investigate parameter es pi ell ell ee nn gg");
 		});
 	}
 
 	function get_best_core_fit(msg) {
-		var top_score = 0, core_fit = null, buf = [];
+		var top_score = 0, core_fit = null, bufStr = '';
 
 		if ( core_speechacts.length <= 0 ) return msg;
 
 		jQuery.map( core_speechacts, function( act, i ) {
 			  var score_obj = _get_score(act, msg.toUpperCase() );
 			  var new_score = score_obj.score;
-			  console.log(JSON.stringify(act) + ' scored ' + new_score + ' buf: ' +  score_obj.buf.join(' ') );
+			  var new_buf = score_obj.buf.join(' ');
+			  console.log(JSON.stringify(act) + ' scored ' + new_score + ' buf: ' + new_buf  );
 			  if ( new_score > top_score ) {
 				console.log( 'New best!');
 				core_fit = act;
 				top_score = new_score;
-				buf = score_obj.buf;
+				bufStr = new_buf;
 			  }
 		});
 			
 		var i = core_fit.indexOf('SPELLING');
-		if ( i > -1 && buf.length > 0 ) {
-			core_fit[i] = buf.join(' ');
+		if ( i > -1 ) {
+			core_fit[i] = bufStr;
 		}
 
 		console.log('Final fit: ' + core_fit.join(' ') );
