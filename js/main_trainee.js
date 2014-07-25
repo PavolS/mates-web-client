@@ -326,10 +326,11 @@ function updateStatus() {
    // scenario control
 	function onScenario(action) {
 		console.log('Send ' + action + ' to supervisor.');
-		var msg = new SpeechAct('tell', 'som', 'supervisor', action);
+		var msg = new SpeechAct('achieve', 'som', 'supervisor', action);
 		doSend( JSON.stringify(msg) );
 	}
 
+   // core grammar (faking NLP)
 	function read_core_grammar() {
 		var lines;
 		jQuery.get('import/core/voiceloop.examples.count.txt', function(data) {
@@ -362,7 +363,7 @@ function updateStatus() {
 			  }
 		});
 			
-		// handle spelling
+		// handle spelling (SPELLING keyword in core speechact)
 		// - currently this only works if 
                 // the last matched part of the core speechact was just before the actuall spelling 
 		// (which is blindly assumed to be correct)
