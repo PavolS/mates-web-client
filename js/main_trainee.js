@@ -146,7 +146,7 @@ function updateStatus() {
 	// TODO: this is one of the things which needs to be shared across MATES
 	var _to_opts = '(SOM|SOE|SPACON)';
 
-	// TODO: These ought to be parsed from the grammars somehow
+	// TODO: These ought to be parsed from the grammars somehow (and shared...)
 	var re_speechact = new RegExp(".*" + _to_opts + " .*" + _from + " (.+)");
 	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+)");
 	var _act = []; // an array to be filled by either re, if it still matches
@@ -362,8 +362,15 @@ function updateStatus() {
 			  }
 		});
 			
+		// handle spelling
+		// - currently this only works if 
+                // the last matched part of the core speechact was just before the actuall spelling 
+		// (which is blindly assumed to be correct)
 		var i = core_fit.indexOf('SPELLING');
 		if ( i > -1 ) {
+			if (i < core_fit.length - 1) {
+				console.log('Currently, we support only SPELLING as last item! (length=' + core_fit.length + ', index=' + i + ' )');
+			}
 			core_fit[i] = bufStr;
 		}
 
