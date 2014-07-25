@@ -326,7 +326,7 @@ function updateStatus() {
    // scenario control
 	function onScenario(action) {
 		console.log('Send ' + action + ' to supervisor.');
-		var msg = new SpeechAct('achieve', 'som', 'supervisor', action);
+		var msg = new SpeechAct('tell', 'som', 'supervisor', action);
 		doSend( JSON.stringify(msg) );
 	}
 
