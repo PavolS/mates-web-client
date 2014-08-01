@@ -1,6 +1,6 @@
 INFO: cmd_ln.c(691): Parsing command line:
 sphinx_jsgf2fsg \
-	-jsgf voiceloop.jsgf.15333 \
+	-jsgf voiceloop.jsgf.32051 \
 	-fsm voiceloop.fsm \
 	-symtab voiceloop.sym 
 
@@ -10,7 +10,7 @@ Current configuration:
 -fsg			
 -fsm			voiceloop.fsm
 -help		no	no
--jsgf			voiceloop.jsgf.15333
+-jsgf			voiceloop.jsgf.32051
 -rule			
 -symtab			voiceloop.sym
 
@@ -29,12 +29,13 @@ INFO: jsgf.c(581): Defined rule: <fromto.to>
 INFO: jsgf.c(581): Defined rule: <polite.start>
 INFO: jsgf.c(581): Defined rule: <polite.to>
 INFO: jsgf.c(581): Defined rule: <polite.end>
+INFO: jsgf.c(581): Defined rule: <polite.loopend>
 INFO: jsgf.c(581): Defined rule: <phoneticAlphabet.spelling>
 INFO: jsgf.c(581): Defined rule: <demo.content>
 INFO: jsgf.c(581): Defined rule: <demo.content_lim>
 INFO: jsgf.c(581): Defined rule: <demo.content_inv>
 INFO: jsgf.c(581): Defined rule: <demo.content_hi>
-INFO: jsgf.c(581): Defined rule: <voiceloop.g00020>
+INFO: jsgf.c(581): Defined rule: <voiceloop.g00021>
 INFO: jsgf.c(581): Defined rule: <demo.content_repeat>
 INFO: fsg_model.c(891): Writing FSM file 'voiceloop.fsm'
 INFO: fsg_model.c(922): Writing FSM symbol table 'voiceloop.sym'

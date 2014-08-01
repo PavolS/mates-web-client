@@ -3,14 +3,14 @@ arc type                                          log
 input symbol table                                voiceloop.sym
 output symbol table                               none
 # of states                                       70
-# of arcs                                         421
+# of arcs                                         435
 initial state                                     0
-# of final states                                 8
+# of final states                                 15
 # of input/output epsilons                        0
 # of input epsilons                               0
 # of output epsilons                              0
-input label multiplicity                          1.01425
-output label multiplicity                         1.01425
+input label multiplicity                          1.01379
+output label multiplicity                         1.01379
 # of accessible states                            70
 # of coaccessible states                          70
 # of connected states                             70

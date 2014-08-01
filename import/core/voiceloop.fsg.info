@@ -2,20 +2,20 @@ fst type                                          vector
 arc type                                          log
 input symbol table                                voiceloop.sym
 output symbol table                               none
-# of states                                       22
-# of arcs                                         32
+# of states                                       21
+# of arcs                                         29
 initial state                                     0
-# of final states                                 4
+# of final states                                 6
 # of input/output epsilons                        0
 # of input epsilons                               0
 # of output epsilons                              0
 input label multiplicity                          1
 output label multiplicity                         1
-# of accessible states                            22
-# of coaccessible states                          22
-# of connected states                             22
+# of accessible states                            21
+# of coaccessible states                          21
+# of connected states                             21
 # of connected components                         1
-# of strongly conn components                     22
+# of strongly conn components                     21
 input matcher                                     n
 output matcher                                    n
 input lookahead                                   n
@@ -34,7 +34,7 @@ output label sorted                               n
 weighted                                          y
 cyclic                                            n
 cyclic at initial state                           n
-top sorted                                        n
+top sorted                                        y
 accessible                                        y
 coaccessible                                      y
 string                                            n

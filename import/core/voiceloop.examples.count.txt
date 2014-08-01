@@ -2,13 +2,13 @@
       3 SOE SOM hi  
       5 SOE SOM investigate parameter SPELLING  
       3 SOE SOM repeat that  
-      3 SOM on LOOP ONE change limits everyone  
-      2 SOM on LOOP ONE good morning everyone  
-      2 SOM on LOOP ONE hello everyone  
-      2 SOM on LOOP ONE hi everyone  
-      4 SOM on LOOP ONE investigate parameter SPELLING everyone  
-      3 SOM on LOOP ONE repeat everyone  
-      2 SOM on LOOP ONE repeat that everyone  
+      3 SOM on LOOP ONE change limits  
+      2 SOM on LOOP ONE good morning  
+      2 SOM on LOOP ONE hello  
+      2 SOM on LOOP ONE hi  
+      4 SOM on LOOP ONE investigate parameter SPELLING  
+      2 SOM on LOOP ONE repeat  
+      3 SOM on LOOP ONE repeat that  
       4 SPACON SOM change limits  
       3 SPACON SOM good morning  
       3 SPACON SOM hello  

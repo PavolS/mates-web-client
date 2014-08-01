@@ -13,6 +13,5 @@ parameter
 SPELLING
 change
 limits
-everyone
 SPACON
 SOE

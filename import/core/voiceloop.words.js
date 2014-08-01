@@ -14,7 +14,6 @@ var wordList = [
 	["SPELLING", "S P EH L IH NG"], 
 	["CHANGE", "CH EY N JH"], 
 	["LIMITS", "L IH M AH T S"], ["LIMITS(1)", "L IH M IH T S"], 
-	["EVERYONE", "EH V R IY W AH N"], 
 	["SPACON", "S P EY K AA N"], 
 	["SOE", "S AW IY"] 
 ];

@@ -1,6 +1,6 @@
 INFO: cmd_ln.c(691): Parsing command line:
 sphinx_jsgf2fsg \
-	-jsgf voiceloop.jsgf.12238 \
+	-jsgf voiceloop.jsgf.28871 \
 	-fsm voiceloop.fsm \
 	-symtab voiceloop.sym 
 
@@ -10,7 +10,7 @@ Current configuration:
 -fsg			
 -fsm			voiceloop.fsm
 -help		no	no
--jsgf			voiceloop.jsgf.12238
+-jsgf			voiceloop.jsgf.28871
 -rule			
 -symtab			voiceloop.sym
 
@@ -42,19 +42,21 @@ INFO: jsgf.c(581): Defined rule: <polite.to>
 INFO: jsgf.c(581): Defined rule: <voiceloop.g00025>
 INFO: jsgf.c(581): Defined rule: <polite.end>
 INFO: jsgf.c(581): Defined rule: <voiceloop.g00027>
+INFO: jsgf.c(581): Defined rule: <polite.loopend>
+INFO: jsgf.c(581): Defined rule: <voiceloop.g00029>
 INFO: jsgf.c(581): Defined rule: <phoneticAlphabet.spelling>
 INFO: jsgf.c(581): Defined rule: <phoneticAlphabet.spelling-letter>
 INFO: jsgf.c(581): Defined rule: <demo.content>
 INFO: jsgf.c(581): Defined rule: <demo.content_lim>
 INFO: jsgf.c(581): Defined rule: <demo.content_inv>
 INFO: jsgf.c(581): Defined rule: <demo.content_hi>
-INFO: jsgf.c(581): Defined rule: <voiceloop.g00034>
+INFO: jsgf.c(581): Defined rule: <voiceloop.g00036>
 INFO: jsgf.c(581): Defined rule: <demo.content_repeat>
 INFO: jsgf.c(353): Right recursion <voiceloop.g00018> 58 => 54
-INFO: jsgf.c(353): Right recursion <voiceloop.g00027> 88 => 84
-INFO: jsgf.c(353): Right recursion <voiceloop.g00021> 184 => 181
-INFO: jsgf.c(353): Right recursion <voiceloop.g00023> 189 => 185
-INFO: jsgf.c(353): Right recursion <voiceloop.g00018> 244 => 240
-INFO: jsgf.c(353): Right recursion <voiceloop.g00027> 274 => 270
+INFO: jsgf.c(353): Right recursion <voiceloop.g00029> 88 => 84
+INFO: jsgf.c(353): Right recursion <voiceloop.g00021> 191 => 188
+INFO: jsgf.c(353): Right recursion <voiceloop.g00023> 196 => 192
+INFO: jsgf.c(353): Right recursion <voiceloop.g00018> 251 => 247
+INFO: jsgf.c(353): Right recursion <voiceloop.g00029> 281 => 277
 INFO: fsg_model.c(891): Writing FSM file 'voiceloop.fsm'
 INFO: fsg_model.c(922): Writing FSM symbol table 'voiceloop.sym'

@@ -345,7 +345,7 @@ function updateStatus() {
 		});
 	}
 
-	function get_best_core_fit(msg) {
+	function get_best_core_fit(msg, includeSpelling) {
 		var top_score = 0, core_fit = null, bufStr = '';
 
 		if ( core_speechacts.length <= 0 ) return msg;
@@ -365,14 +365,15 @@ function updateStatus() {
 			
 		// handle spelling (SPELLING keyword in core speechact)
 		// - currently this only works if 
-                // the last matched part of the core speechact was just before the actuall spelling 
-		// (which is blindly assumed to be correct)
+                //   the last matched part of the core speechact was just before the actuall spelling 
+		//   (which is blindly assumed to be correct)
+		// - needs to be enabled via includeSpelling function param
 		var i = core_fit.indexOf('SPELLING');
 		if ( i > -1 ) {
 			if (i < core_fit.length - 1) {
 				console.log('Currently, we support only SPELLING as last item! (length=' + core_fit.length + ', index=' + i + ' )');
 			}
-			core_fit[i] = bufStr;
+			core_fit[i] = (includeSpelling) ? bufStr : '';
 		}
 
 		console.log('Final fit: ' + core_fit.join(' ') );

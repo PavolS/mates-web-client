@@ -22,7 +22,7 @@ public <voiceloop> = <voiceloop_standard> | <voiceloop_broadcast>;
 
 // voiceloop composition
 //
-<voiceloop_broadcast> = <speaker> on LOOP ONE <voiceloop.content> everyone;
+<voiceloop_broadcast> = <speaker> on LOOP ONE <voiceloop.content> <polite.loopend>;
 <voiceloop_standard> = <target> <speaker> <voiceloop.content>;
 
 <speaker> = <fromto.from1> SOM <fromto.from2>;
@@ -48,6 +48,7 @@ public <voiceloop> = <voiceloop_standard> | <voiceloop_broadcast>;
 <polite.start> = <NULL>;
 <polite.to> = <NULL>;
 <polite.end> = <NULL>;
+<polite.loopend> = <NULL>;
 // .. end merge with /lhome1/pavol/git-repos/mates-grammars/data/stubs/noise/polite.jsgf:polite.
 
 // Start merge with /lhome1/pavol/git-repos/mates-grammars/data/stubs/phoneticAlphabet/dictFriendly.jsgf:phoneticAlphabet ...
