@@ -7,10 +7,12 @@ function agentStyle(agent) {
 	}
 };
 
-function isMe(op) {
+function isMe(op, id) {
+	var _id = id;
 	if (! op) return false;
-	if (! operator) return (op.toLowerCase() == 'som');
-	return ( operator.toLowerCase() == op.toLowerCase() );
+	if (! _id) _id = operator;
+	if (! _id) return (op.toLowerCase() == 'som');
+	return ( _id.toLowerCase() == op.toLowerCase() );
 };
 
 function display_speechact(act, loop) {

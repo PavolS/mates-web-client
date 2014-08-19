@@ -78,7 +78,6 @@
   {
     writeStatus("DISCONNECTED");
     operator = null;
-    print_scenario();
     connected = false;
 	restart(); // d3
         update_ws_buttons();
@@ -141,61 +140,25 @@
   // ws -- stt interface
   function onFinalRecognition(rec, internal)
   {
-
 	console.log("on final...");
 
-	var _from = "SOM";
-	if (operator) {
-		_from = operator.toUpperCase();
+	if (! rec) {
+		console.log('bad (no) rec, you need to repeat or enter data manually"');
+		return false;
 	}
 
-	// TODO: this is one of the things which needs to be shared across MATES
-	var _to_opts = '(SOM|SOE|SPACON)';
+	// NLP simulation
+	var _msg = get_best_core_fit(rec).toLowerCase();
 
-	// TODO: These ought to be parsed from the grammars somehow (and shared...)
-	var re_speechact = new RegExp(".*" + _to_opts + " .*" + _from + " (.+)");
-	var re_speechact_loop = new RegExp(".*" + _from + ".* ON (LOOP) ONE (.+)");
-	var _act = []; // an array to be filled by either re, if it still matches
+	// update ui
+	document.getElementById("to").value = 'loop';
+	document.getElementById("msg").value = _msg;
+	showInterrupt();
 
-	if ( ( re_speechact.test(rec) && (_act = re_speechact.exec(rec)) )  || 
-	     ( re_speechact_loop.test(rec) && (_act = re_speechact_loop.exec(rec)) )
-	   )
-	{ 
-		console.log('Original msg\n' + rec + '\nroughly fits expected recognition...');
+	//  start count-down
+	send_interval = setInterval(function(){sendBtn_countDown()},1000);
 
-		// TODO: Primitive workaround as NLP simulation
-		var best_fit = get_best_core_fit(rec);
-
-		if ( ( re_speechact.test(best_fit) && (_act = re_speechact.exec(best_fit)) )  || 
-		     ( re_speechact_loop.test(best_fit) && (_act = re_speechact_loop.exec(best_fit)) )
-		   )
-		{
-
-			console.log('Valid best fit:\n' + best_fit);
-		};
-
-		console.log('Working with parsed recognition:' + JSON.stringify(_act) );
-
-		var _to = _act[1].toLowerCase();
-		var _msg = _act[2].toLowerCase();
-
-		document.getElementById("to").value = _to;
-		document.getElementById("msg").value = _msg;
-
-		showInterrupt();
-		send_interval = setInterval(function(){sendBtn_countDown()},1000);
-		return true;
-
-	};
-
-	console.log('bad rec: "' + rec + ', adding dummy for testing"');
-        if (! internal) {
-		onFinalRecognition("SOM ON LOOP ONE INVESTIGATE PARAMETER THIS IS A TEST", true);
-	}
-	display_speechact(
-		{ intent: '', speaker: _from.toLowerCase(), content: 'test test' }
-	);
-	return false;
+	return true;
   }
 
   function onMicOk()
@@ -209,7 +172,7 @@
   {
 	// these two ... 
 	operator = document.getElementById("id").value;
-	print_scenario();
+
         update_ws_buttons();
 	// ... should be done uppon succes response to these actions
 	var msg = new Registration(operator);
@@ -330,6 +293,12 @@
                 document.getElementById("sendBtn").innerHTML = send_inner;
 	}
 
+	function on_id_select() {
+		// TODO update the operator here!!
+		// repaint the scenario
+		print_scenario();
+	}
+
    // scenario control
 	function onScenario(action) {
 		console.log('Send ' + action + ' to supervisor.');
@@ -371,7 +340,7 @@
 
 		    tr.classList.add("alert");
 		    tr.classList.add( 
-				isMe( line[0] ) ? "info" : "default" 
+				isMe( line[0], document.getElementById("id").value ) ? "info" : "default" 
 			);
 
 		    var tds = [
