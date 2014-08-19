@@ -67,7 +67,7 @@
 
 			    <div class="tab-content active">
 				<p><br/></p>
-				<div id='loop1-div'  ><table>
+				<div id='loop1-div'  ><table class="loop">
 					<thead>
 					</thead>
 					<tbody id='loop1-table'>
@@ -150,9 +150,9 @@
 		<section class="tabs" >
 
 		    <ul class="tab-nav">
-			<li class = "active"><a href="#">Help</a></li>
-			<li><a href="#">Scenario</a></li>
-			<li><a href="#">Recognition</a></li>
+			<li class = "active"> <a href="#">Help</a></li>
+			<li> <a href="#">Scenario</a></li>
+			<li> <a href="#">Recognition</a></li>
 			<li> <a href="#">RabbitMQ</a></li>
 			<li> <a href="#">Client log</a></li>
 			<li> <a href="#">Examples</a></li>
@@ -163,16 +163,23 @@
 
 		    <div class="tab-content active" >
 			<p>
-			This client allows you to communicate with the MATES training system either directly via typing a message and hitting the blue send button or 
-			via our speach to text processing, once you enabled the microphone access (the mic button gets green). Simply push the button, speak the message, and release the button.
+			This client allows you to communicate with the MATES training system. 
+			Once you have enabled the microphone access and the mic button<i style="color: green" class="icon-mic"></i> gets <span style="color: green">green</span>, 
+			you can simply push the button, speak the message, and release the button.
+			Your spoken message will be converted to text and send automatically after a 3s wait period. 
+			During this period you can cancel the process (<span style="color: red">red</span><i style="color: red" class="icon-cancel"></i>),
+			edit the message field or cut the waiting by hitting the <span style="color: blue">blue</span> send button<i style="color: blue" class="icon-sound"></i>. 
+			Of course, you can directly enter a message and hit send as well.
 			</p>				
 			<p>
-			The connection and registration are handled automatically, when a connection is active, the loop circle is green. When agents speak, they appear as additional circles connected to the
+			The connection and registration are handled automatically. When a connection is active, the loop circle is <span style="color: green">green</span>
+			(<span style="color: gray">gray</span> for no connection). 
+			When agents speak, they appear as additional circles connected to the
 			loop and their messages are displayed next to them. The loop communication is protocolled also
 			in the corresponding loop tab above. The tabs in the bottom section (here) allow you to further monitor what is going on behind the scenes in more detail. 
 			</p>	
 			<p>
-			You can see the expected messages in the scenario tab, where you can also start/stop and restart the training scenario.
+			You can see the expected messages in the scenario tab, where you can also start<i style="color: green" class="icon-play"></i>/stop<i style="color: red" class="icon-stop"></i>  and 				restart<i style="color: #f6b83f" class="icon-ccw"></i> the training scenario.
 			</p>			
 
 		    </div>
@@ -188,15 +195,12 @@
 			    <div class="small warning btn"><button onclick="onScenario('restart'); window.location.reload();"><i class="icon-ccw"></i></button></div>
 			</div>
 			<p/>
-			<p>
-			SOM on loop one hello
-			</p>
-			<p>
-			SOE SOM investigate parameter
-			</p>
-			<p>
-			SOE SOM change limits
-			</p>
+			<div id="scenario-div"><table class="scenario">
+					<thead>
+					</thead>
+					<tbody id='scenario-table'>
+					</tbody>
+			</table></div>
 		    </div>
 
 		    <div class="tab-content bottom" id="rec-output">
@@ -206,7 +210,7 @@
 		    </div>
 
 		    <div class="tab-content bottom" id="current-status">
-			Loading page
+			Loading page...
 		    </div>
 
 		    <iframe class="tab-content bottom twelve columns" src="import/voiceloop.examples.count.txt" seamless>

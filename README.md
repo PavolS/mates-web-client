@@ -9,6 +9,7 @@ Based on Gumby Framework which is published under MIT license (see below) and ha
 - [FitText](http://fittextjs.com/) - Paravel
 - [jQuery](http://jquery.com/)
 - [Modernizr](http://modernizr.com/)
+- /import - Which is a direcotry that needs to contain definitions for the voiceloop grammar (as FST), the used words and a list of core utterences in /import/core/voiceloop.examples.count.txt. It is by default filled with a snapshot of the export directory created by running make un the voiceloop grammar definition in the mates-grammars module.
 
 Further, the following js libs are heavily used:
 - [pocketsphinx.js](http://syl22-00.github.io/pocketsphinx.js/)

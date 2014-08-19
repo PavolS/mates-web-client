@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="core/" kind="src" path="import"/>
+	<classpathentry kind="src" path="import/core"/>
+	<classpathentry excluding="pocketsphinx/|libs/|gumby/|libs/ui/" kind="src" path="js"/>
+	<classpathentry kind="src" path="js/gumby"/>
+	<classpathentry excluding="ui/" kind="src" path="js/libs"/>
+	<classpathentry kind="src" path="js/libs/ui"/>
+	<classpathentry kind="src" path="js/pocketsphinx"/>
+	<classpathentry excluding="core/" kind="src" path="shared"/>
+	<classpathentry kind="src" path="shared/core"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

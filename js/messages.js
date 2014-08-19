@@ -8,7 +8,9 @@ function agentStyle(agent) {
 };
 
 function isMe(op) {
-	return (operator == op);
+	if (! op) return false;
+	if (! operator) return (op.toLowerCase() == 'som');
+	return ( operator.toLowerCase() == op.toLowerCase() );
 };
 
 function display_speechact(act, loop) {

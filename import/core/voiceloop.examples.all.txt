@@ -1,50 +1,50 @@
 SPACON SOM change limits  
-SOE SOM repeat that  
-SPACON SOM good morning  
-SOM on LOOP ONE investigate parameter SPELLING  
-SOE SOM hi  
-SOM on LOOP ONE hello  
-SOM on LOOP ONE change limits  
-SOE SOM investigate parameter SPELLING  
-SOM on LOOP ONE repeat that  
-SPACON SOM hi  
-SPACON SOM hello  
-SPACON SOM hi  
-SOE SOM investigate parameter SPELLING  
-SPACON SOM change limits  
-SOE SOM repeat that  
-SOM on LOOP ONE hi  
-SOE SOM repeat that  
-SPACON SOM good morning  
+investigate parameter SPELLING  
+all stations repeat that  
+proceed  
+wilco  
+roll call  
+repeat that  
+wilco  
 SOE SOM change limits  
+all stations wilco  
 SOM on LOOP ONE investigate parameter SPELLING  
-SOM on LOOP ONE change limits  
-SPACON SOM repeat that  
-SOM on LOOP ONE change limits  
-SOM on LOOP ONE repeat that  
-SOM on LOOP ONE hi  
-SOE SOM investigate parameter SPELLING  
-SOM on LOOP ONE investigate parameter SPELLING  
-SOM on LOOP ONE good morning  
-SPACON SOM hello  
-SOE SOM hi  
-SOM on LOOP ONE repeat that  
-SPACON SOM change limits  
-SPACON SOM good morning  
-SOM on LOOP ONE good morning  
-SPACON SOM repeat that  
-SPACON SOM investigate parameter SPELLING  
+SPACON SOM wilco  
+change limits  
+all stations change limits  
+wilco  
 SOE SOM change limits  
+change limits  
+SOM on LOOP ONE roll call  
+wilco  
+roll call  
+repeat that  
+SPACON SOM roll call  
 SOE SOM investigate parameter SPELLING  
-SOM on LOOP ONE repeat  
-SPACON SOM repeat that  
-SOE SOM investigate parameter SPELLING  
-SPACON SOM change limits  
-SOE SOM hi  
+roll call  
+proceed  
+wilco  
+roll call  
+repeat  
+SOM on LOOP ONE proceed  
+investigate parameter SPELLING  
+roll call  
+SOM on LOOP ONE roll call  
+SPACON SOM repeat  
 SOE SOM change limits  
-SOM on LOOP ONE hello  
-SPACON SOM investigate parameter SPELLING  
-SPACON SOM hello  
-SOM on LOOP ONE repeat  
-SOM on LOOP ONE investigate parameter SPELLING  
-SPACON SOM hi  
+all stations roll call  
+SOM on LOOP ONE proceed  
+investigate parameter SPELLING  
+change limits  
+proceed  
+SPACON SOM roll call  
+investigate parameter SPELLING  
+all stations change limits  
+proceed  
+investigate parameter SPELLING  
+roll call  
+SOM on LOOP ONE wilco  
+SPACON SOM proceed  
+SOE SOM roll call  
+repeat  
+SOM on LOOP ONE repeat that  

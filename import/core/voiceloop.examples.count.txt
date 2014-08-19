@@ -1,17 +1,24 @@
+      2 all stations change limits  
+      1 all stations repeat that  
+      1 all stations roll call  
+      1 all stations wilco  
+      3 change limits  
+      5 investigate parameter SPELLING  
+      4 proceed  
+      2 repeat  
+      2 repeat that  
+      6 roll call  
       3 SOE SOM change limits  
-      3 SOE SOM hi  
-      5 SOE SOM investigate parameter SPELLING  
-      3 SOE SOM repeat that  
-      3 SOM on LOOP ONE change limits  
-      2 SOM on LOOP ONE good morning  
-      2 SOM on LOOP ONE hello  
-      2 SOM on LOOP ONE hi  
-      4 SOM on LOOP ONE investigate parameter SPELLING  
-      2 SOM on LOOP ONE repeat  
-      3 SOM on LOOP ONE repeat that  
-      4 SPACON SOM change limits  
-      3 SPACON SOM good morning  
-      3 SPACON SOM hello  
-      3 SPACON SOM hi  
-      2 SPACON SOM investigate parameter SPELLING  
-      3 SPACON SOM repeat that  
+      1 SOE SOM investigate parameter SPELLING  
+      1 SOE SOM roll call  
+      1 SOM on LOOP ONE investigate parameter SPELLING  
+      2 SOM on LOOP ONE proceed  
+      1 SOM on LOOP ONE repeat that  
+      2 SOM on LOOP ONE roll call  
+      1 SOM on LOOP ONE wilco  
+      1 SPACON SOM change limits  
+      1 SPACON SOM proceed  
+      1 SPACON SOM repeat  
+      2 SPACON SOM roll call  
+      1 SPACON SOM wilco  
+      5 wilco  

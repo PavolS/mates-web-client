@@ -12,11 +12,14 @@
   // mq,tts
   var output, operator;
 
+
+  //ui
   // send timer
   var send_interval, send_to = send_to_nominal = 3;
-
   // original send inner html
   var send_inner = document.getElementById("sendBtn").innerHTML;
+  //parsed scenario file
+  var scenario = [];
 
 
   function init()
@@ -40,11 +43,13 @@
     // read the core speechacts
     read_core_grammar();
 
+    // read and print the scenario description
+    read_and_print_scenario();
   }
 
-function updateStatus() {
+  function updateStatus() {
 	return true;
-};
+  };
 
   function openWebSocket(andSend)
   {
@@ -73,6 +78,7 @@ function updateStatus() {
   {
     writeStatus("DISCONNECTED");
     operator = null;
+    print_scenario();
     connected = false;
 	restart(); // d3
         update_ws_buttons();
@@ -203,6 +209,7 @@ function updateStatus() {
   {
 	// these two ... 
 	operator = document.getElementById("id").value;
+	print_scenario();
         update_ws_buttons();
 	// ... should be done uppon succes response to these actions
 	var msg = new Registration(operator);
@@ -330,6 +337,59 @@ function updateStatus() {
 		doSend( JSON.stringify(msg) );
 	}
 
+	function read_and_print_scenario() {
+		var lines;
+		jQuery.get('public/scenario.txt', function(data) {
+			console.log("SCENARIO:\n" + data);
+			// no comments, no empty lines, split each line
+			lines = jQuery.map( data.replace(/\#.*$/g, '').replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
+			  return [ n.replace(/^ | $/g, '').split(/\t/g) ];
+			});
+			scenario = lines;
+			print_scenario();
+		});
+	}
+
+	function print_scenario() {
+
+		var myNode = document.getElementById("scenario-table");
+		while (myNode.firstChild) {
+		    myNode.removeChild(myNode.firstChild);
+		}
+
+		console.log(JSON.stringify(scenario) + ' is being processed');
+		jQuery.map( scenario, function( line, i ) {
+		    // skip to next if wrongly parsed
+		    if ( line.length == 2 ) {
+			console.log(JSON.stringify(line) + ' is being processed');
+		    } else {
+			console.log(JSON.stringify(line) + ' has wrong format');
+			return true; 
+		    }
+
+		    var tr = document.createElement("tr");
+
+		    tr.classList.add("alert");
+		    tr.classList.add( 
+				isMe( line[0] ) ? "info" : "default" 
+			);
+
+		    var tds = [
+			document.createElement("td"),
+			document.createElement("td"),
+		    ];
+
+		    tds[0].innerHTML = line[0].toUpperCase();
+		    tds[1].innerHTML = line[1].toLowerCase();
+
+		    for (var i= 0; i<2; i++) {
+			tr.appendChild(tds[i]);
+		    }
+
+		    document.getElementById("scenario-table").appendChild(tr);
+		});		
+	}
+
    // core grammar (faking NLP)
 	function read_core_grammar() {
 		var lines;
@@ -366,7 +426,7 @@ function updateStatus() {
 		// handle spelling (SPELLING keyword in core speechact)
 		// - currently this only works if 
                 //   the last matched part of the core speechact was just before the actuall spelling 
-		//   (which is blindly assumed to be correct)
+		//   (i.e. core is "bla bla ... bla SPELLING", this is blindly assumed to be correct)
 		// - needs to be enabled via includeSpelling function param
 		var i = core_fit.indexOf('SPELLING');
 		if ( i > -1 ) {
