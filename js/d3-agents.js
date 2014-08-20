@@ -291,11 +291,16 @@ function _add_speaker(speaker, pos) {
 
 }
 
+function d3_add_speaker(speaker) {
+	d3_update_graph_node(
+		new SpeechAct('', speaker, '', '')
+	);
+}
 
-function _update_graph_node(act) {
+function d3_update_graph_node(act) {
 
     if (!act || !act.speaker) {
-	console.log("Missing something");
+	console.log("Missing speaker in speechact...");
 	return;
     }
 

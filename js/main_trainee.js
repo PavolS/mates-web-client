@@ -65,6 +65,8 @@
   {
     writeStatus("connected");
 
+    if (! operator) doRegister();
+
     connected = true;
 	restart(); // d3
     	update_ws_buttons();
@@ -86,20 +88,24 @@
   function onMessage(evt)
   {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
-    var act = JSON.parse(evt.data);
-    if (act ) {
-	if ( act.speaker && act.content ) { 
-		playSpeechAct(act); 
-		display_speechact(act);
+    var obj = JSON.parse(evt.data);
+    if (obj ) {
+	if ( obj.speaker && obj.content ) { 
+		playSpeechAct(obj); 
+		display_speechact(obj);
+	}
+	if ( obj.success ) { 
+		onRegister(obj); 
 	}
     } else {
-	playError("Ooops!");
+	writeToScreen('<span style="color: red;">ERROR: Not valid json object!</span>');
     }
   }
 
   function onError(evt)
   {
-    writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    writeToScreen('<span style="color: red;">ERROR: ' + evt.data+'</span>');
+    operator=null;
   }
 
   function doSend(message)
@@ -107,8 +113,6 @@
     sendBtn_clear();
     websocket.send(message);
     writeToScreen("SENT: " + message); 
-
-
   }
 
   function onSend()
@@ -120,8 +124,8 @@
 	}
 
 	if (!operator) {
-		console.log("onSend: restester first...");
-		onRegister(true); // register and send
+		console.log("onSend: register first...");
+		doRegister(true); // register and send
 		return;
 	}
 
@@ -161,14 +165,8 @@
 	return true;
   }
 
-  function onMicOk()
-  {
-	console.log("On mic ok...");
-	if (! operator) onRegister();
-  }
-
   // mq do- & on-register
-  function onRegister(andSend)
+  function doRegister(andSend)
   {
 	// these two ... 
 	operator = document.getElementById("id").value;
@@ -178,16 +176,18 @@
 	var msg = new Registration(operator);
 	doSend( JSON.stringify(msg) );
 
-	display_speechact(
-		{ intent: '', speaker: operator, recipient: 'everyone', content: '' }
-	);
+	d3_add_speaker(operator);
 
-	console.log("onRegister: " + andSend);
+	console.log("doRegister " + operator + ": " + andSend);
 
 	if (andSend) {
 		onSend();
 	}
   }
+
+  function onRegister(obj) {
+	console.log("on register ...");
+  }; 
 
 
   function writeToScreen(message)

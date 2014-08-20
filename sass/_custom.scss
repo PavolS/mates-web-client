@@ -1,6 +1,7 @@
 // MATES custom SCSS 
 
 $bottom-tabs-height: 250px;
+$scenario-control-height: 45px;
 
 .row.bottom-offset {
 	min-height: 50px; 
@@ -43,7 +44,24 @@ table.loop {
 		width: 60px;
 		font-weight: bold;
 	}
+}
 
+#scenario-div {
+	overflow:auto;
+	width: 960px / 12 * 8 * 0.9;
+
+	max-height:$bottom-tabs-height - $scenario-control-height; 
+	min-height:$bottom-tabs-height - $scenario-control-height; 
+
+	tr td:first-child {
+		width: 60px;
+		font-weight: bold;
+	}
+
+	tr td:nth-child(2) {
+		width: 960px / 12 * 7 * 0.9 - 60px;
+		font-weight: regular;
+	}
 }
 
 #loop1-div {

@@ -22,7 +22,7 @@ function display_speechact(act, loop) {
 		document.getElementById('loop1-div')	
 	);
 
-	_update_graph_node(act);
+	d3_update_graph_node(act);
 	
 }
 

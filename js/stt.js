@@ -30,7 +30,6 @@
 		startBtn.disabled = false;
 		document.getElementById('startStopBtn-div').classList.toggle("success",true);
 		document.getElementById('startBtn-div').classList.toggle("success",true);
-		onMicOk(); // callback to the main js handler
 	};
       };
 
@@ -54,6 +53,7 @@
       // Callback function once the user authorises access to the microphone
       // in it, we instanciate the recorder
       function startUserMedia(stream) {
+	console.log("Audio media callback...");
         var input = audioContext.createMediaStreamSource(stream);
         // Firefox hack https://support.mozilla.org/en-US/questions/984179
         window.firefox_audio_hack = input; 
@@ -62,8 +62,9 @@
         // If a recognizer is ready, we pass it to the recorder
         if (recognizer) recorder.consumers = [recognizer];
         recorderReady = true;
-        updateUI();
+	console.log("Update ui (audio on)...");
         updateStatus("Audio recorder ready");
+        updateUI();
       };
 
       // This starts recording. We first need to get the id of the grammar to use
@@ -181,7 +182,8 @@
 		  updateStatus("Error initializing Web Audio browser");
 		}
 
-		if (navigator.getUserMedia) 
+		if (navigator.getUserMedia) {
+			console.log("Getting audio media...");
 			navigator.getUserMedia(
 				{audio: true}, 
 				startUserMedia, 
@@ -189,8 +191,9 @@
 	                                updateStatus("No live audio input in this browser");
 	                        }
 			);
-		else
+		} else {
 			updateStatus("Sorrry, no web audio support in this browser :(");
+		}
 
 	      // Wiring JavaScript to the UI
 	      var startStopBtn = document.getElementById('startStopBtn');
