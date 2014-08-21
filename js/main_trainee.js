@@ -123,16 +123,18 @@
 		return;
 	}
 
-	if (!operator) {
+	var _text = document.getElementById("msg").value;
+	var _to = document.getElementById("to").value;
+	var _intent = document.getElementById("intent").value;
+	var _from = document.getElementById("id").value;
+
+
+	if (!operator || operator != _from) {
 		console.log("onSend: register first...");
 		doRegister(true); // register and send
 		return;
 	}
 
-	var _text = document.getElementById("msg").value;
-	var _to = document.getElementById("to").value;
-	var _intent = document.getElementById("intent").value;
-	var _from = document.getElementById("id").value;
 	var msg = new SpeechAct(_intent, _from, _to, _text);
 
         // playSpeechAct(msg);
@@ -151,8 +153,8 @@
 		return false;
 	}
 
-	// NLP simulation
-	var _msg = get_best_core_fit(rec).toLowerCase();
+	// NLP simulation + remove unnecessary white spaces
+	var _msg = get_best_core_fit(rec).toLowerCase().replace(/^\s+|\s+$/g, '').replace(/\s\s+/g, ' ');
 
 	// update ui
 	document.getElementById("to").value = 'loop';
