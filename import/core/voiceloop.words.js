@@ -1,0 +1,20 @@
+var wordList = [
+	["ALL", "AO L"], 
+	["STATIONS", "S T EY SH AH N Z"], 
+	["ROLL", "R OW L"], 
+	["CALL", "K AO L"], 
+	["REPEAT", "R IH P IY T"], ["REPEAT(1)", "R IY P IY T"], 
+	["THAT", "DH AE T"], ["THAT(1)", "DH AH T"], 
+	["PROCEED", "P R AH S IY D"], ["PROCEED(1)", "P R OW S IY D"], ["PROCEED(2)", "P ER S IY D"], 
+	["WILCO", "W IH L K AA"], 
+	["INVESTIGATE", "IH N V EH S T AH G EY T"], 
+	["PARAMETER", "P ER AE M AH T ER"], 
+	["CHANGE", "CH EY N JH"], 
+	["LIMITS", "L IH M AH T S"], ["LIMITS(1)", "L IH M IH T S"], 
+	["SOM", "S AA M"], 
+	["ON", "AA N"], ["ON(1)", "AO N"], 
+	["LOOP", "L UW P"], 
+	["ONE", "W AH N"], ["ONE(1)", "HH W AH N"], 
+	["SPACON", "S P EY K AA N"], 
+	["SOE", "S AW IY"] 
+];
