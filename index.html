@@ -94,7 +94,7 @@
 		<div id="details" class="hideme" >
 			<div class="one columns">
 			</div>
-			<div class="five columns">
+			<div class="eleven columns">
 				<select id='id' onchange="on_id_select()" >
 				  <option value="som">SOM</option>
 				  <option value="soe">SOE</option>
@@ -111,6 +111,7 @@
 				  <option value="som">SOM</option>
 				  <option value="loop">LOOP 1</option>
 				</select>
+				</span><span class="recognition" id="rec-output"></span>
 			</div>
 		</div>
 	</div>
@@ -153,7 +154,6 @@
 		    <ul class="tab-nav">
 			<li class = "active"> <a href="#">Help</a></li>
 			<li> <a href="#">Scenario</a></li>
-			<li> <a href="#">Recognition</a></li>
 			<li> <a href="#">RabbitMQ</a></li>
 			<li> <a href="#">Client log</a></li>
 			<li> <a href="#">Examples</a></li>
@@ -202,9 +202,6 @@
 					<tbody id='scenario-table'>
 					</tbody>
 			</table></div>
-		    </div>
-
-		    <div class="tab-content bottom" id="rec-output">
 		    </div>
 
 		    <div class="tab-content bottom" id="output">

@@ -1687,6 +1687,10 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 @media only screen and (min-width: 381px) and (max-width: 767px) { .valign:before { height: 60px; } }
 @media only screen and (max-width: 380px) { .valign:before { height: 90px; } }
 
+.recognition { color: #666666; font-weight: regular; }
+
+.recognition.final { color: #ffffff; -webkit-animation: onFinalRec 5s; /* Chrome, Safari, Opera */ animation: onFinalRec 3s; }
+
 table.loop { width: 504px; }
 @media only screen and (min-width: 381px) and (max-width: 767px) { table.loop { width: 460.8px; } }
 @media only screen and (max-width: 380px) { table.loop { width: 266px; } }
@@ -1721,6 +1725,15 @@ table.loop tr td:nth-child(3) { width: 60px; font-weight: bold; }
 @media only screen and (min-width: 768px) { .text.input { width: 82.66667%; } }
 @media only screen and (min-width: 381px) and (max-width: 767px) { .text.input { width: 65.33333%; } }
 @media only screen and (max-width: 380px) { .text.input { width: 65.33333%; } }
+/* Chrome, Safari, Opera */
+@-webkit-keyframes onFinalRec { 0% { color: #666666; font-weight: regular; }
+  10% { color: #000000; font-weight: bold; }
+  100% { color: #ffffff; font-weight: regular; } }
+
+/* Standard syntax */
+@keyframes onFinalRec { from { color: #000000; font-weight: bold; }
+  to { color: #ffffff; font-weight: regular; } }
+
 svg { background-color: #FFF; cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; }
 
 svg:not(.active):not(.ctrl) { cursor: crosshair; }

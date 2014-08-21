@@ -18,6 +18,18 @@ $scenario-control-height: 45px;
 
 }
 
+.recognition {
+	color: #666666;
+	font-weight: regular;
+}
+
+.recognition.final {
+	color: #ffffff;
+	-webkit-animation: onFinalRec 5s; /* Chrome, Safari, Opera */
+	animation: onFinalRec 3s;
+}
+
+
 table.loop {
 
 	width: 960px / 12 * 7 * 0.9;
@@ -138,6 +150,18 @@ table.loop {
 }
 
 
+/* Chrome, Safari, Opera */
+@-webkit-keyframes onFinalRec {
+    0%   {color: #666666; font-weight: regular;}
+    10%  {color: #000000; font-weight: bold;}
+    100% {color: #ffffff; font-weight: regular;}
+}
+
+/* Standard syntax */
+@keyframes onFinalRec {
+    from  {  color: #000000; font-weight: bold;}
+    to  {  color: #ffffff; font-weight: regular;}
+}
 
 
 @import "_d3.scss";

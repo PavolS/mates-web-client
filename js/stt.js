@@ -18,8 +18,13 @@
       };
 
       // To display the hypothesis sent by the recognizer
-      function updateHyp(hyp) {
-        if (outputContainer) outputContainer.innerHTML = hyp;
+      function updateHyp(hyp, final) {
+        if (! outputContainer) {
+		consolo.log("Error, no outputContainer to display hypothesis");
+		return false;
+	}
+	outputContainer.classList.toggle("final",final);
+	outputContainer.innerHTML = "'" + hyp + "'";
       };
 
       // This updates the UI when the app might get ready
@@ -67,7 +72,7 @@
         updateUI();
       };
 
-      // This starts recording. We first need to get the id of the grammar to use
+      // This starts recording. 
       var startRecording = function() {
 
 		document.getElementById("startBtn-div").style.display = 'none';
@@ -156,11 +161,11 @@
 		        // This is a case when the recognizer has a new hypothesis
 		        if (e.data.hasOwnProperty('hyp')) {
 		          var newHyp = e.data.hyp;
-		          if (e.data.hasOwnProperty('final') && e.data.final) {
+			  var final = (e.data.hasOwnProperty('final') && e.data.final);
+		          if (final) {
 				onFinalRecognition(newHyp);
-				newHyp = "Final: " + newHyp;
 			  }
-		          updateHyp(newHyp);
+		          updateHyp(newHyp, final);
 		        }
 		        // This is the case when we have an error
 		        if (e.data.hasOwnProperty('status') && (e.data.status == "error")) {
