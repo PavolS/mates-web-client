@@ -16,7 +16,6 @@
 * Free to use under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
 */
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; }
 
 html { line-height: 1; }
@@ -635,6 +634,8 @@ html, body { height: 100%; }
 
 /* Fonts */
 @font-face { font-family: "entypo"; font-style: normal; font-weight: 400; src: url(../fonts/icons/entypo.eot); src: url("../fonts/icons/entypo.eot?#iefix") format("ie9-skip-eot"), url("../fonts/icons/entypo.woff") format("woff"), url("../fonts/icons/entypo.ttf") format("truetype"); }
+
+@font-face { font-family: 'Open Sans'; src: url("../fonts/google-fonts/OpenSans-Light.ttf") format("truetype"); }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 { font-family: "Open Sans"; font-weight: 300; color: #444444; text-rendering: optimizeLegibility; padding-top: 0.273em; line-height: 1.15538em; padding-bottom: 0.273em; }
@@ -1687,6 +1688,8 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 @media only screen and (min-width: 381px) and (max-width: 767px) { .valign:before { height: 60px; } }
 @media only screen and (max-width: 380px) { .valign:before { height: 90px; } }
 
+.valign.slim:before { height: 30px; }
+
 .recognition { color: #666666; font-weight: regular; }
 
 .recognition.final { color: #ffffff; -webkit-animation: onFinalRec 5s; /* Chrome, Safari, Opera */ animation: onFinalRec 3s; }
@@ -1731,8 +1734,9 @@ table.loop tr td:nth-child(3) { width: 60px; font-weight: bold; }
   100% { color: #ffffff; font-weight: regular; } }
 
 /* Standard syntax */
-@keyframes onFinalRec { from { color: #000000; font-weight: bold; }
-  to { color: #ffffff; font-weight: regular; } }
+@keyframes onFinalRec { 0% { color: #666666; font-weight: regular; }
+  10% { color: #000000; font-weight: bold; }
+  100% { color: #ffffff; font-weight: regular; } }
 
 svg { background-color: #FFF; cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; }
 

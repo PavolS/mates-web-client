@@ -106,10 +106,14 @@
 				  <option value="ask">ask</option>
 				</select>
 				<select id='to'>
+				  <option value="loop">LOOP 1</option>
 				  <option value="spacon">SPACON</option>
 				  <option value="soe">SOE</option>
 				  <option value="som">SOM</option>
-				  <option value="loop">LOOP 1</option>
+				</select>
+				<select id='aloud'>
+				  <option value="silently">silently</option>
+				  <option value="aloud">aloud</option>
 				</select>
 				</span><span class="recognition" id="rec-output"></span>
 			</div>
@@ -118,7 +122,6 @@
 
 	<div class="row">
 		<div style="display: inline-block; vertical-align: top;" class="one columns">
-		<!-- <div class="one columns"> -->
 			<div id="startStopBtn-div" class="medium oval btn not-on-phones">
 				<button id="startStopBtn" ><i class="icon-mic"></i></button>
 			</div>
@@ -134,7 +137,6 @@
 		</div>
 
 		<div  style="display: inline-block;" class="eleven columns">
-		<!-- <div id="voice-div" class="eleven columns">  -->
 			<div class="prepend append field">
 			    <button class="adjoined toggle not-on-phones" gumby-trigger="#details"><i class="icon-search"></i></button>
 			    <input id='msg' class="text input" type="text" placeholder="voiceloop messge" />
@@ -170,7 +172,8 @@
 			Your spoken message will be converted to text and send automatically after a 3s wait period. 
 			During this period you can cancel the process (<span style="color: red">red</span><i style="color: red" class="icon-cancel"></i>),
 			edit the message field or cut the waiting by hitting the <span style="color: blue">blue</span> send button<i style="color: blue" class="icon-sound"></i>. 
-			Of course, you can directly enter a message and hit send as well.
+			Of course, you can directly enter a message and hit send as well (you can also edit all details of the spech act as well as observe the current
+			utterence recognition by clicking on the details button <i style="color: gray" class="icon-search"></i>).
 			</p>				
 			<p>
 			The connection and registration are handled automatically. When a connection is active, the loop circle is <span style="color: green">green</span>
@@ -187,13 +190,19 @@
 
 
 		    <div class="tab-content" >
-			<h3>
-			Voiceloop demo scenario
-			</h3>
-			<div class="prepend append field" style="height:25px;">
-			    <div class="small secondary btn"><button onclick="onScenario('start')"><i class="icon-play"></i></button></div>
-			    <div class="small danger btn"><button onclick="onScenario('stop'); window.location.reload();"><i class="icon-stop"></i></button></div>
-			    <div class="small warning btn"><button onclick="onScenario('restart'); window.location.reload();"><i class="icon-ccw"></i></button></div>
+			<div class="valign row slim">
+				<div class="five columns">
+					<h3>
+					Voiceloop demo scenario
+					</h3>
+				</div>
+				<div class="three columns">
+					<div class="prepend append field" style="height:25px;">
+					    <div class="small secondary btn"><button onclick="onScenario('start')"><i class="icon-play"></i></button></div>
+					    <div class="small danger btn"><button onclick="onScenario('stop'); window.location.reload();"><i class="icon-stop"></i></button></div>
+					    <div class="small warning btn"><button onclick="onScenario('restart'); window.location.reload();"><i class="icon-ccw"></i></button></div>
+					</div>
+				</div>
 			</div>
 			<p/>
 			<div id="scenario-div"><table class="scenario">
@@ -214,8 +223,11 @@
 		    <iframe class="tab-content bottom twelve columns" src="import/voiceloop.examples.count.txt" seamless>
 		    </iframe>
 
-		    <iframe class="tab-content bottom twelve columns" src="import/core/voiceloop.examples.count.txt" seamless>
-		    </iframe>
+		    <div class="tab-content bottom">
+			    <input type="checkbox" checked="true" id="core_only" onclick="onCoreOnlyToggle('core_only')"> use only core grammar for speech recognition</input>
+			    <iframe class="twelve columns" src="import/core/voiceloop.examples.count.txt" seamless>
+			    </iframe>
+		    </div>
 
 		</section>
 	</div>
@@ -254,7 +266,7 @@
 	Note: If you opt to use this method of defered loading,
 	ensure that any javascript essential to the initial
 	display of the page is included separately in a normal
-	script tag.
+	script tag. -->
 
 	<script type="text/javascript">
 	function downloadJSAtOnload() {
@@ -267,7 +279,7 @@
 	else if (window.attachEvent)
 	window.attachEvent("onload", downloadJSAtOnload);
 	else window.onload = downloadJSAtOnload;
-	</script> -->
+	</script> 
 
 	<script src="js/gumby/plugins.js"></script>
 	<script src="js/gumby/main.js"></script>
@@ -289,9 +301,10 @@
 
 
 
-	<!-- grammar for voicellop -->
+	<!-- grammars (main and core) for voicellop -->
 	<script src="import/voiceloop.words.js"></script>
 	<script src="import/voiceloop.fsg.js"></script>
+	<script src="import/core/voiceloop.fsg.js"></script>
 
 	<!-- stt: pocketsphinx.js -->
 	<script src="js/audioRecorder.js"></script>

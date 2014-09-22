@@ -11,6 +11,12 @@
  
   // mq,tts
   var output, operator;
+  // tts - voice setup (see also config.js)
+  var mespeakSpeakers = {
+	som: { variant: 'h5'},
+	spacon: spacon_voice,
+	soe: soe_voice
+  }
 
 
   //ui
@@ -21,6 +27,14 @@
   //parsed scenario file
   var scenario = [];
 
+  // compatibility stuff
+  if(!window.console){ window.console = {log: function(){} }; } 
+  
+  if(!window.console.info){ window.console.warn = window.console.log; } 
+  if(!window.console.warn){ window.console.warn = window.console.log; } 
+  if(!window.console.error){ window.console.warn = window.console.log; } 
+  if(!window.console.debug){ window.console.warn = window.console.log; } 
+  
 
   function init()
   {
@@ -45,6 +59,9 @@
 
     // read and print the scenario description
     read_and_print_scenario();
+
+    // update the use core only checkbox
+    document.getElementById("core_only").checked = use_core_only;
   }
 
   function updateStatus() {
@@ -127,6 +144,7 @@
 	var _to = document.getElementById("to").value;
 	var _intent = document.getElementById("intent").value;
 	var _from = document.getElementById("id").value;
+	var _aloud = (document.getElementById("aloud").value == 'aloud');
 
 
 	if (!operator || operator != _from) {
@@ -137,7 +155,7 @@
 
 	var msg = new SpeechAct(_intent, _from, _to, _text);
 
-        // playSpeechAct(msg);
+	if (_aloud) playSpeechAct(msg);
 	display_speechact(msg);
 
 	doSend( JSON.stringify(msg) );
@@ -154,7 +172,7 @@
 	}
 
 	// NLP simulation + remove unnecessary white spaces
-	var _msg = get_best_core_fit(rec).toLowerCase().replace(/^\s+|\s+$/g, '').replace(/\s\s+/g, ' ');
+	var _msg = get_best_core_fit(rec, forward_spelling).toLowerCase().replace(/^\s+|\s+$/g, '').replace(/\s\s+/g, ' ');
 
 	// update ui
 	document.getElementById("to").value = 'loop';
@@ -241,12 +259,7 @@
 		self.operator = role;
 	}
 
-   // voice setup
-	var mespeakSpeakers = {
-		som: { variant: 'h5'},
-		spacon: { variant: 'h1'},
-		soe: { variant: 'f1'}
-	}
+
 
    // ui updates
 	function update_ws_buttons() {
@@ -301,6 +314,11 @@
 		print_scenario();
 	}
 
+   // core only control
+	function onCoreOnlyToggle(_id) {
+		use_core_only = document.getElementById(_id).checked;
+	}
+
    // scenario control
 	function onScenario(action) {
 		console.log('Send ' + action + ' to supervisor.');
@@ -310,7 +328,7 @@
 
 	function read_and_print_scenario() {
 		var lines;
-		jQuery.get('public/scenario.txt', function(data) {
+		jQuery.get('import/scenario.txt', function(data) {
 			console.log("SCENARIO:\n" + data);
 			// no comments, no empty lines, split each line
 			lines = jQuery.map( data.replace(/\#.*$/g, '').replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
@@ -323,11 +341,13 @@
 
 	function print_scenario() {
 
+		// remove all entries
 		var myNode = document.getElementById("scenario-table");
 		while (myNode.firstChild) {
 		    myNode.removeChild(myNode.firstChild);
 		}
 
+		// process the input file (text expected)
 		console.log(JSON.stringify(scenario) + ' is being processed');
 		jQuery.map( scenario, function( line, i ) {
 		    // skip to next if wrongly parsed
@@ -365,30 +385,35 @@
 	function read_core_grammar() {
 		var lines;
 		jQuery.get('import/core/voiceloop.examples.count.txt', function(data) {
-			console.log("CORE SPEECHACTs:\n" + data);
+			console.debug("CORE SPEECHACTs:\n" + data);
 			lines = jQuery.map( data.toUpperCase().replace(/\r\n\s*$|\r\s*$|\n\s*$/g, '').split(/\r\n|\r|\n/g), function( n, i ) {
 			  return [ n.replace(/\d/g,'').replace(/\s\s*/g, ' ').replace(/^ | $/g, '').split(/ /g) ];
 			});
-			console.log(JSON.stringify(lines));
+			console.debug(JSON.stringify(lines));
 			core_speechacts = lines;
 
-			get_best_core_fit("This is a silly test for the investigate parameter es pi ell ell ee nn gg");
+			get_best_core_fit("This is loop a silly test for the investigate parameter es pi ell ell ee nn gg (with spell. on)", true);
+			get_best_core_fit("This is a loop silly test for the investigate parameter es pi ell ell ee nn gg (with spell. off)", false);
+			get_best_core_fit("This is a silly loop test for an empty investigate parameter", true);
 		});
 	}
 
 	function get_best_core_fit(msg, includeSpelling) {
 		var top_score = 0, core_fit = null, bufStr = '';
 
-		if ( core_speechacts.length <= 0 ) return msg;
+		if ( core_speechacts.length <= 0 ) {
+			console.error('WARNING! No core acts defined, leaving recognized msg untouched!');
+			return msg;
+		}
 
 		jQuery.map( core_speechacts, function( act, i ) {
 			  var score_obj = _get_score(act, msg.toUpperCase() );
 			  var new_score = score_obj.score;
 			  var new_buf = score_obj.buf.join(' ');
-			  console.log(JSON.stringify(act) + ' scored ' + new_score + ' buf: ' + new_buf  );
+			  console.debug(JSON.stringify(act) + ' scored ' + new_score + ' buf: ' + new_buf  );
 			  if ( new_score > top_score ) {
-				console.log( 'New best!');
-				core_fit = act;
+				console.debug( 'New best!');
+				core_fit = act.slice(0);
 				top_score = new_score;
 				bufStr = new_buf;
 			  }
@@ -396,35 +421,60 @@
 			
 		// handle spelling (SPELLING keyword in core speechact)
 		// - currently this only works if 
-                //   the last matched part of the core speechact was just before the actuall spelling 
-		//   (i.e. core is "bla bla ... bla SPELLING", this is blindly assumed to be correct)
-		// - needs to be enabled via includeSpelling function param
+        //   the last matched part of the core speechact was just before the actuall spelling 
+		//   (i.e. core is "bla bla ... BLA SPELLING" and BLA matched, this is blindly assumed to be correct)
+		// - needs to be enabled via forward_spelling config param
 		var i = core_fit.indexOf('SPELLING');
 		if ( i > -1 ) {
-			if (i < core_fit.length - 1) {
-				console.log('Currently, we support only SPELLING as last item! (length=' + core_fit.length + ', index=' + i + ' )');
-			}
 			core_fit[i] = (includeSpelling) ? bufStr : '';
 		}
 
-		console.log('Final fit: ' + core_fit.join(' ') );
+		console.info('Final fit: ' + core_fit.join(' ') );
 
 
 		return core_fit.join(' ');
 	}
 
-	function _get_score(act, msg) {
-		var hits = 0, buf = msg.split(' '), ind = 0;
+	function _get_score(core_act, msg) {
+		var hits = 0, 
+		    buf_weight = 1e-3,
+			buf = msg.split(' '), 
+			msg_word_count = buf.length, 
+			core_act_word_count = core_act.length, 
+			core_act_spelling_token_count = 0, 
+			buf_coefficient = -1;
 
-		jQuery.map( act, function( word, i ) {
+		var i = core_act.indexOf('SPELLING');
+		if ( i > -1 ) {
+			if (i < core_act.length - 1) {
+				console.error('Currently, we support only SPELLING as last item! (length=' + core_fit.length + ', index=' + i + ' )');
+				return { 'score': -1e3, 'buf': buf}
+			}
+			core_act_word_count--;
+			core_act_spelling_token_count++;
+			buf_coefficient = 1;
+		}
+		
+		jQuery.map( core_act, function( word, i ) {
 			var j = buf.indexOf(word);
 			if ( j > -1 ) {
 				hits++;
-				buf.splice(0,j+1);
+				buf.splice(0,j+1); // yes, this might delete a lot more than just the matched word!
 			}
 		});
-
-		return { 'score': hits/act.length - buf.length/1e5, 'buf': buf };
+		
+		// the main normalized bonus for number of matching 'real' words from the core speech act
+		var hits_bonus = hits / core_act_word_count;
+		
+		// the spelling and buffer bonus depends on whether we actually are looking at a 
+		// core speech act which includes a spelling token or not
+		// - if not, it is simply a normalized penalty, depending on the size of the buffer (i.e. unmatched words after last matching word)
+		// - if yes, it is a _potential_ corresponding bonus (unless, there are less words in the buffer than spelling tokens in the core act)
+		//   note, however, that a non-empty buffer _always_ causes a penalty in the non-spelling case
+		var spelling_and_buffer_bonus =  buf_coefficient * 
+			(buf.length - core_act_spelling_token_count)/msg_word_count;
+										 
+		return { 'score': hits_bonus * (1 - buf_weight) + spelling_and_buffer_bonus * buf_weight, 'buf': buf };
 	}
 
 

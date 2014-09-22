@@ -1,7 +1,7 @@
 /* Fonts */
 
 // Import Google Web Fonts
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+//@import url(fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
 
 // Set local icon font
@@ -17,12 +17,7 @@
 
 // To include your own, local copies of fonts, use the following template
 //
-//@font-face {
-//  font-family: '#{$some-font-variable}';
-//  font-style: normal;
-//  font-weight: 400;
-//  src: url(../fonts/icons/#{$some-font-variable}.eot);
-//  src: url('../fonts/icons/#{$some-font-variable}.eot?#iefix') format('ie9-skip-eot'),
-//       url('../fonts/icons/#{$some-font-variable}.woff') format('woff'),
-//       url('../fonts/icons/#{$some-font-variable}.ttf')  format('truetype');
-//}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/google-fonts/OpenSans-Light.ttf')  format('truetype');
+}

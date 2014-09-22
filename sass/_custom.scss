@@ -18,6 +18,10 @@ $scenario-control-height: 45px;
 
 }
 
+.valign.slim:before {
+	height: 30px;
+}
+
 .recognition {
 	color: #666666;
 	font-weight: regular;
@@ -159,8 +163,9 @@ table.loop {
 
 /* Standard syntax */
 @keyframes onFinalRec {
-    from  {  color: #000000; font-weight: bold;}
-    to  {  color: #ffffff; font-weight: regular;}
+    0%   {color: #666666; font-weight: regular;}
+    10%  {color: #000000; font-weight: bold;}
+    100% {color: #ffffff; font-weight: regular;}
 }
 
 
